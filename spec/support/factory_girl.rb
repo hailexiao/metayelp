@@ -7,4 +7,8 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :yelper do
+    
+  end
+
 end

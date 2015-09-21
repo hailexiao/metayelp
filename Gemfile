@@ -36,6 +36,10 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'faker'
+end
+
 
 gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
