@@ -1,4 +1,5 @@
 require 'factory_girl'
+require 'faker'
 
 FactoryGirl.define do
   factory :user do
@@ -8,7 +9,11 @@ FactoryGirl.define do
   end
 
   factory :yelper do
-    
+    name Faker::Name.name
+    location Faker::Address.city
+    number_of_reviews Random.rand(10)
+    image_url Faker::Avatar.image
+    uid Faker::Lorem.characters(22)
   end
 
 end

@@ -1,4 +1,4 @@
-require 'rails-helper'
+require 'rails_helper'
 
 feature 'user visits main page', %Q{
   As a prospective reviewer
@@ -8,8 +8,18 @@ feature 'user visits main page', %Q{
 
   # Acceptance Criteria
   # [] When a user visits the main page, they should see a list of Yelpers
-  # [] List should be sorted by location
 
-  
+  scenario 'visit main page' do
+    yelper1 = FactoryGirl.create(:yelper)
+    yelper2 = FactoryGirl.create(:yelper)
+
+    visit yelpers_path
+
+    expect(page).to have_content(yelper1.name)
+    expect(page).to have_content(yelper2.name)
+    expect(page).to have_content(yelper1.location)
+    expect(page).to have_content(yelper2.location)
+
+  end
 
 end
