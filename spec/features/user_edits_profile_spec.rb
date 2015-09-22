@@ -95,9 +95,12 @@ feature 'edit user profile', %{
     fill_in 'Current password', with: user.password
     click_button 'Update'
 
-    expect(user.email).to eq "thisismynewemail@email.com"
-    expect(user.first_name).to eq "Thisismynewfirstname"
-    expect(user.last_name).to eq "Thisismynewlastname"
-    expect(user.password).to eq "Thisismynewpassword"
+    expect(page).to have_content('Your account has been updated successfully.')
+    click_link 'Edit My Account'
+
+    expect(find_field('Email').value).to eq 'thisismynewemail@email.com'
+    expect(find_field('First name').value).to eq 'Thisismynewfirstname'
+    expect(find_field('Last name').value).to eq 'Thisismynewlastname'
+
   end
 end
