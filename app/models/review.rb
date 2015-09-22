@@ -10,6 +10,6 @@ class Review < ActiveRecord::Base
   validates :body, length: { minimum: 25, maximum: 5000 }
 
   validates :user, presence: true
-  
+
   validates :yelper, presence: true
 end
