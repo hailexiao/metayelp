@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'yelpers#index'
   devise_for :users
 
   resources :yelpers, only: [:index]
