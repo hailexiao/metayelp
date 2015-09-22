@@ -1,25 +1,23 @@
 require 'rails_helper'
 require 'open-uri'
 
-
-feature 'user creates yelper', %Q{
+feature 'user creates yelper', %{
   As an authenticated user
   I would like to add new Yelpers
   So I can review them
 } do
 
   scenario 'successfully submits yelper' do
-    user = FactoryGirl.create(:user)
-
     visit new_yelper_path
-    fill_in 'yelper[uid]', with: 'http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ'
+    fill_in 'yelper[uid]',
+      with: 'http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ'
     click_button 'Submit'
 
-    #crawl page
-    doc = Nokogiri::HTML(open("http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ",
-    "User-Agent" => "Ruby/#{RUBY_VERSION}",
-    "From" => "foo@bar.invalid",
-    "Referer" => "http://www.ruby-lang.org/"))
+    doc = Nokogiri::HTML(open(
+      "http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ",
+      "User-Agent" => "Ruby/#{RUBY_VERSION}",
+      "From" => "foo@bar.invalid",
+      "Referer" => "http://www.ruby-lang.org/"))
 
     location = doc.css(".user-location").text
     name = doc.css(".user-profile_info h1").text
@@ -32,8 +30,6 @@ feature 'user creates yelper', %Q{
   end
 
   scenario 'yelper submit fails' do
-    user = FactoryGirl.create(:user)
-
     visit new_yelper_path
     fill_in 'yelper[uid]', with: 'http://www.google.com'
     click_button 'Submit'
