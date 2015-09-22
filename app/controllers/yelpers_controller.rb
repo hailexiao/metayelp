@@ -39,11 +39,10 @@ class YelpersController < ApplicationController
   def crawl(id)
     profile_id = find_profile_id(id)
     profile_url = "http://www.yelp.com/user_details?userid=" + profile_id
-    doc = Nokogiri::HTML(open(
-                              profile_url,
-                              "User-Agent" => "Ruby/#{RUBY_VERSION}",
-                              "From" => "foo@bar.invalid",
-                              "Referer" => "http://www.ruby-lang.org/"))
+    Nokogiri::HTML(open(profile_url,
+                        "User-Agent" => "Ruby/#{RUBY_VERSION}",
+                        "From" => "foo@bar.invalid",
+                        "Referer" => "http://www.ruby-lang.org/"))
   end
 
   def find_profile_id(id)
