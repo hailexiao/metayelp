@@ -11,6 +11,7 @@ feature 'delete user account', %{
   end
 
   scenario 'user logs in and deletes account' do
+
     user = FactoryGirl.create(:user)
 
     visit new_user_session_path
