@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user visits main page', %Q{
+feature 'user visits main page', %{
   As a prospective reviewer
   I want to view a list of Yelpers
   So that I can select a Yelper to review

@@ -2,13 +2,14 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :yelper
 
-  validates_presence_of :rating
-  validates_numericality_of :rating
-  validates_inclusion_of :rating, in: 1..5
+  validates :rating, presence: true
+  validates :rating, numericality: { only_integer: true }
+  validates :rating, inclusion: { in: 1..5 }
 
-  validates_presence_of :body
-  validates_length_of :body, minimum: 25, maximum: 5000
+  validates :body, presence: true
+  validates :body, length: { minimum: 25, maximum: 5000 }
 
-  validates_presence_of :user
-  validates_presence_of :yelper
+  validates :user, presence: true
+  
+  validates :yelper, presence: true
 end
