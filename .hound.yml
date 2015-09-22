@@ -276,5 +276,3 @@ Style/UnneededPercentQ:
 
 Metrics/AbcSize:
   Enabled: false
-
-fail_on_violations: true
