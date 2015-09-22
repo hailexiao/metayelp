@@ -29,8 +29,8 @@ class YelpersController < ApplicationController
         render :new
       end
     else
-        flash[:notice] = "Please submit a valid Profile URL."
-        redirect_to new_yelper_path
+      flash[:notice] = "Please submit a valid Profile URL."
+      redirect_to new_yelper_path
     end
   end
 
