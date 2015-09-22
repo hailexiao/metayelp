@@ -4,6 +4,8 @@ require 'faker'
 FactoryGirl.define do
   factory :user do
     sequence(:email) {|n| "user#{n}@example.com" }
+    first_name Faker::Name.name.split(' ')[0]
+    last_name Faker::Name.name.split(' ')[1]
     password 'password'
     password_confirmation 'password'
   end
