@@ -7,13 +7,15 @@ feature 'edit user profile', %{
 } do
 
   # Acceptance criteria
-  # [*] If user is not signed in, the "edit" option should not appear on the menu bar
+  # [*] If user is not signed in, the "edit" option should not appear on the me-
+  #       nu bar
   # [*] If user is not signed in and manually enters the "edit" URL, user is
   #   redirected to login page
   # [*] If user is signed in, they should see the edit page
   # [*] If user updates with invalid information, they should be redirected to
   #   edit page with error message
-  # [*] If user updates with valid information, the information should be saved to the database
+  # [*] If user updates with valid information, the information should be saved
+  #     to the database
 
   scenario 'user is not signed in' do
     visit root_path
