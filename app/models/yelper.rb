@@ -6,7 +6,7 @@ class Yelper < ActiveRecord::Base
   validates :location, presence: true
 
   validates :number_of_reviews, presence: true
-  validates :number_of_reviews, numericality: { only_integer: true}
+  validates :number_of_reviews, numericality: { only_integer: true }
 
   validates :image_url, presence: true
 
