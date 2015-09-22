@@ -8,16 +8,17 @@ feature 'user creates yelper', %{
 } do
 
   scenario 'successfully submits yelper' do
+    link_url = "http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ"
     visit new_yelper_path
     fill_in 'yelper[uid]',
-      with: 'http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ'
+      with: link_url
     click_button 'Submit'
 
     doc = Nokogiri::HTML(open(
-      "http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ",
-      "User-Agent" => "Ruby/#{RUBY_VERSION}",
-      "From" => "foo@bar.invalid",
-      "Referer" => "http://www.ruby-lang.org/"))
+                          link_url,
+                          "User-Agent" => "Ruby/#{RUBY_VERSION}",
+                          "From" => "foo@bar.invalid",
+                          "Referer" => "http://www.ruby-lang.org/"))
 
     location = doc.css(".user-location").text
     name = doc.css(".user-profile_info h1").text

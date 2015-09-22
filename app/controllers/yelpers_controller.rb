@@ -15,13 +15,7 @@ class YelpersController < ApplicationController
 
   def create
     if params[:yelper][:uid].include?("userid=")
-      profile_id = yelper_params[:uid].split("userid=").last[0..21]
-      profile_url = "http://www.yelp.com/user_details?userid=" + profile_id
-
-      doc = Nokogiri::HTML(open(profile_url,
-            "User-Agent" => "Ruby/#{RUBY_VERSION}",
-            "From" => "foo@bar.invalid",
-            "Referer" => "http://www.ruby-lang.org/"))
+      doc = crawl(yelper_params[:uid])
 
       params[:yelper][:name] = doc.css(".user-profile_info h1").text
 
@@ -33,16 +27,16 @@ class YelpersController < ApplicationController
       params[:yelper][:number_of_reviews] = doc.css(
         ".review-count span strong").text
 
-      params[:yelper][:uid] = profile_id
+      params[:yelper][:uid] = find_profile_id(yelper_params[:uid])
 
       @yelper = Yelper.new(yelper_params)
 
       if @yelper.save
-          flash[:notice] = "Yelper added!"
-          redirect_to yelper_path(@yelper.id)
+        flash[:notice] = "Yelper added!"
+        redirect_to yelper_path(@yelper.id)
       else
-          flash[:notice] = "Please submit a valid Profile URL."
-          render :new
+        flash[:notice] = "Please submit a valid Profile URL."
+        render :new
       end
     else
         flash[:notice] = "Please submit a valid Profile URL."
@@ -52,9 +46,22 @@ class YelpersController < ApplicationController
 
   private
 
+  def crawl(id)
+    profile_id = find_profile_id(id)
+    profile_url = "http://www.yelp.com/user_details?userid=" + profile_id
+    doc = Nokogiri::HTML(open(profile_url,
+          "User-Agent" => "Ruby/#{RUBY_VERSION}",
+          "From" => "foo@bar.invalid",
+          "Referer" => "http://www.ruby-lang.org/"))
+  end
+
+  def find_profile_id(id)
+    id.split("userid=").last[0..21]
+  end
+
+
   def yelper_params
     params.require(:yelper).permit(:name, :location, :image_url,
       :number_of_reviews, :uid)
   end
-
 end
