@@ -87,7 +87,7 @@ feature 'edit user profile', %{
     expect(first_menu_item.text).to have_content 'Edit My Account'
 
     click_link 'Edit My Account'
-    # fill_in 'Email', with: 'thisismynewemail@email.com'
+    fill_in 'Email', with: 'thisismynewemail@email.com'
     fill_in 'First name', with: 'Thisismynewfirstname'
     fill_in 'Last name', with: 'Thisismynewlastname'
     fill_in 'Password', with: 'Thisismynewpassword'
@@ -95,7 +95,7 @@ feature 'edit user profile', %{
     fill_in 'Current password', with: user.password
     click_button 'Update'
 
-    # expect(user.email).to eq "thisismynewemail@email.com"
+    expect(user.email).to eq "thisismynewemail@email.com"
     expect(user.first_name).to eq "Thisismynewfirstname"
     expect(user.last_name).to eq "Thisismynewlastname"
     expect(user.password).to eq "Thisismynewpassword"
