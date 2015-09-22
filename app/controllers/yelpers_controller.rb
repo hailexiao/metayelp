@@ -15,19 +15,9 @@ class YelpersController < ApplicationController
 
   def create
     if params[:yelper][:uid].include?("userid=")
-      doc = crawl(yelper_params[:uid])
 
-      params[:yelper][:name] = doc.css(".user-profile_info h1").text
-
-      params[:yelper][:location] = doc.css(".user-location").text
-
-      params[:yelper][:image_url] = doc.css(
-        ".photo-slideshow_image img").attr('src').text
-
-      params[:yelper][:number_of_reviews] = doc.css(
-        ".review-count span strong").text
-
-      params[:yelper][:uid] = find_profile_id(yelper_params[:uid])
+      doc = crawl(params[:yelper][:uid])
+      add_params(params, doc)
 
       @yelper = Yelper.new(yelper_params)
 
@@ -35,7 +25,7 @@ class YelpersController < ApplicationController
         flash[:notice] = "Yelper added!"
         redirect_to yelper_path(@yelper.id)
       else
-        flash[:notice] = "Please submit a valid Profile URL."
+        flash[:notice] = "Unable to retrieve profile page."
         render :new
       end
     else
@@ -59,6 +49,17 @@ class YelpersController < ApplicationController
     id.split("userid=").last[0..21]
   end
 
+  def add_params(p, doc)
+    p[:yelper][:name] = doc.css(".user-profile_info h1").text
+    p[:yelper][:location] = doc.css(".user-location").text
+    p[:yelper][:uid] = find_profile_id(yelper_params[:uid])
+    p[:yelper][:image_url] = doc.css(
+      ".photo-slideshow_image img").attr('src').text
+
+    p[:yelper][:number_of_reviews] = doc.css(
+      ".review-count span strong").text
+    p
+  end
 
   def yelper_params
     params.require(:yelper).permit(:name, :location, :image_url,
