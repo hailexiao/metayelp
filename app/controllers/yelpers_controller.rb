@@ -21,17 +21,19 @@ class YelpersController < ApplicationController
 
       @yelper = Yelper.new(yelper_params)
 
-      if @yelper.save
-        flash[:notice] = "Yelper added!"
-        redirect_to yelper_path(@yelper.id)
-      else
-        flash[:notice] = "Unable to retrieve profile page."
-        render :new
-      end
     else
       flash[:notice] = "Please submit a valid Profile URL."
-      redirect_to new_yelper_path
+      redirect_to new_yelper_path and return
     end
+
+    if @yelper.save
+      flash[:notice] = "Yelper added!"
+      redirect_to yelper_path(@yelper.id)
+    else
+      flash[:notice] = "Unable to retrieve profile page."
+      render :new
+    end
+
   end
 
   private
@@ -61,6 +63,6 @@ class YelpersController < ApplicationController
 
   def yelper_params
     params.require(:yelper).permit(:name, :location, :image_url,
-                                  :number_of_reviews, :uid)
+                                    :number_of_reviews, :uid)
   end
 end
