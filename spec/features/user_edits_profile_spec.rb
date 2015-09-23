@@ -39,8 +39,8 @@ feature 'edit user profile', %{
     click_button 'Log in'
 
     expect(page).to have_content('Signed in successfully')
-    first_menu_item = first(:css, '.top-bar-section .right li a')
-    expect(first_menu_item.text).to have_content 'Edit My Account'
+    second_menu_item = all(:css, '.top-bar-section .right li a')[1]
+    expect(second_menu_item.text).to have_content 'Edit My Account'
 
     click_link 'Edit My Account'
 
@@ -63,9 +63,8 @@ feature 'edit user profile', %{
     click_button 'Log in'
 
     expect(page).to have_content('Signed in successfully')
-    first_menu_item = first(:css, '.top-bar-section .right li a')
-    expect(first_menu_item.text).to have_content 'Edit My Account'
-
+    second_menu_item = all(:css, '.top-bar-section .right li a')[1]
+    expect(second_menu_item.text).to have_content 'Edit My Account'
     click_link 'Edit My Account'
     fill_in 'Password', with: 'bbbb'
     fill_in 'Password confirmation', with: 'xxxx'
@@ -86,8 +85,8 @@ feature 'edit user profile', %{
     click_button 'Log in'
 
     expect(page).to have_content('Signed in successfully')
-    first_menu_item = first(:css, '.top-bar-section .right li a')
-    expect(first_menu_item.text).to have_content 'Edit My Account'
+    second_menu_item = all(:css, '.top-bar-section .right li a')[1]
+    expect(second_menu_item.text).to have_content 'Edit My Account'
 
     click_link 'Edit My Account'
     fill_in 'Email', with: 'thisismynewemail@email.com'

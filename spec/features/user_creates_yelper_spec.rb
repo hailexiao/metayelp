@@ -12,7 +12,7 @@ feature "user creates yelper", %{
     fill_in "yelper[uid]", with: link_url
     click_button 'Submit'
 
-    doc = Nokogiri::HTML(open(link_url,
+    doc = Nokogiri::HTML(open(link_url, allow_redirections: :all,
                               "User-Agent" => "Ruby/#{RUBY_VERSION}",
                               "From" => "foo@bar.invalid",
                               "Referer" => "http://www.ruby-lang.org/"))

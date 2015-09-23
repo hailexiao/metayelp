@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row bump">
+   <div class="small-12 large-6 columns">
+      <div class="row">
+         <div class="profile-card">
+            <div class="small-12 large-8 columns">
+               <h4><%= @user.first_name.titleize + " " +
+                @user.last_name[0].upcase %></h4>
+               <p><i class="fi-comment"></i><span><%= @user.reviews.size.to_s +
+                 " Reviews" %></span></p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
