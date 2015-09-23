@@ -18,10 +18,10 @@ Yelper.create!(name: "Miles H.", location: "Cambridge, MA",
                uid: "ixtEB7AH49Z5u_giDFG0DA")
 
 Yelper.create!(name: "Kelly H.",
-              location: "Orlando, FL", number_of_reviews: 243,
-              image_url:
-              "https://s3-media1.fl.yelpcdn.com/photo/6Km87skugnz...",
-              uid: "DgZa1AWNuwdnXGCQ-__o_w")
+               location: "Orlando, FL", number_of_reviews: 243,
+               image_url:
+               "https://s3-media1.fl.yelpcdn.com/photo/6Km87skugnz...",
+               uid: "DgZa1AWNuwdnXGCQ-__o_w")
 
 Yelper.create!(name: "Chris J.", location: "Providence, RI",
                number_of_reviews: 220,
