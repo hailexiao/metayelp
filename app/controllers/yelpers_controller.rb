@@ -15,16 +15,13 @@ class YelpersController < ApplicationController
 
   def create
     if params[:yelper][:uid].include?("userid=")
-
       doc = crawl(params[:yelper][:uid])
       add_params(params, doc)
-
       @yelper = Yelper.new(yelper_params)
     else
       flash[:notice] = "Please submit a valid Profile URL."
       redirect_to new_yelper_path && return
     end
-
     if @yelper.save
       flash[:notice] = "Yelper added!"
       redirect_to yelper_path(@yelper.id)
@@ -43,7 +40,7 @@ class YelpersController < ApplicationController
                    "User-Agent" => "Ruby/#{RUBY_VERSION}",
                    "From" => "foo@bar.invalid",
                    "Referer" => "http://www.ruby-lang.org/"))
-end
+  end
 
   def find_profile_id(id)
     id.split("userid=").last[0..21]
@@ -61,6 +58,6 @@ end
 
   def yelper_params
     params.require(:yelper).permit(:name, :location, :image_url,
-                                   :number_of_reviews, :uid)
+      :number_of_reviews, :uid)
   end
 end
