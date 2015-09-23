@@ -4,12 +4,12 @@ class CrawlYelp
   end
 
   def add_yelper
-    page = crawl(find_profile_id)
-    Yelper.new(name: page.css(".user-profile_info h1").text,
-               location: page.css(".user-location").text,
+    p = crawl(find_profile_id)
+    Yelper.new(name: p.css(".user-profile_info h1").text,
+               location: p.css(".user-location").text,
                uid: find_profile_id,
-               number_of_reviews: page.css(".review-count span strong").text,
-               image_url: page.css(".photo-slideshow_image img").attr("src").text)
+               number_of_reviews: p.css(".review-count span strong").text,
+               image_url: p.css(".photo-slideshow_image img").attr("src").text)
   end
 
   private
@@ -18,7 +18,7 @@ class CrawlYelp
     @url.split("userid=").last[0..21]
   end
 
-  def crawl(id)
+  def crawl
     profile_id = find_profile_id
     profile_url = "http://www.yelp.com/user_details?userid=" + profile_id
     Nokogiri::HTML(open(profile_url, allow_redirections: :all,
