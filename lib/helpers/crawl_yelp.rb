@@ -4,7 +4,7 @@ class CrawlYelp
   end
 
   def add_yelper
-    p = crawl(find_profile_id)
+    p = crawl
     Yelper.new(name: p.css(".user-profile_info h1").text,
                location: p.css(".user-location").text,
                uid: find_profile_id,
