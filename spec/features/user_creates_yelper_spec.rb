@@ -4,7 +4,7 @@ require "open-uri"
 feature "user creates yelper", %{
   As an authenticated user
   I would like to add new Yelpers
-  So I can review them and stuff boop
+  So I can review them and stuff
 } do
   scenario "successfully submits yelper" do
     link_url = "http://www.yelp.com/user_details?userid=grEg3_xe95VezJytyov7cQ"
