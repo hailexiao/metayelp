@@ -6,7 +6,7 @@ RSpec.configure do |config|
       DatabaseCleaner.strategy = :truncation
     end
       DatabaseCleaner.start
-  end
+    end
 
   config.after do
     DatabaseCleaner.clean

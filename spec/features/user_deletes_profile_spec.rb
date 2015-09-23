@@ -31,7 +31,8 @@ feature 'delete user account', %{
     expect(alert.text).to eq('Are you sure?')
     alert.accept
 
-    expect(page).to have_content 'Bye! Your account has been successfully cancelled.'
+    expect(page).to have_content
+      'Bye! Your account has been successfully cancelled.'
   end
 
   after(:all) do
