@@ -19,8 +19,7 @@ feature 'edit user profile', %{
 
   scenario 'user is not signed in' do
     visit root_path
-    first_menu_item = first(:css, '.top-bar-section .right li a')
-    expect(first_menu_item.text).to have_content 'Sign Up'
+    expect(page).to have_link 'Sign Up'
   end
 
   scenario 'user manually enters edit URL' do
@@ -39,8 +38,7 @@ feature 'edit user profile', %{
     click_button 'Log in'
 
     expect(page).to have_content('Signed in successfully')
-    second_menu_item = all(:css, '.top-bar-section .right li a')[1]
-    expect(second_menu_item.text).to have_content 'Edit My Account'
+    expect(page).to have_link 'Edit My Account'
 
     click_link 'Edit My Account'
 
