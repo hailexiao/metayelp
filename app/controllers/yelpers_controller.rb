@@ -54,13 +54,13 @@ class YelpersController < ApplicationController
     p[:yelper][:location] = doc.css(".user-location").text
     p[:yelper][:uid] = find_profile_id(yelper_params[:uid])
     p[:yelper][:image_url] = doc.css(".photo-slideshow_image img").
-                                      attr("src").text
+      attr("src").text
     p[:yelper][:number_of_reviews] = doc.css(".review-count span strong").text
     p
   end
 
   def yelper_params
     params.require(:yelper).permit(:name, :location, :image_url,
-                                    :number_of_reviews, :uid)
+                                  :number_of_reviews, :uid)
   end
 end
