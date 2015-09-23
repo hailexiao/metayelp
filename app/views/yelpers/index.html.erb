@@ -1,13 +1,31 @@
 
         <h1> Yelpers </h1>
-<ul class="small-block-grid-3">
-  <% @yelpers.each do |yelper| %>
-    <img src="<%= yelper.image_url %>" alt="profile image"><br>
-    <h3><%= yelper.name %></h3>
-    <h5><%= yelper.location %></h5>
-  <% end %>
-</ul>
 
+        <div class="row">
+              <% @yelpers.each do |yelper| %>
+              <div class="medium-6 large-4 columns">
+                <article class="article-card">
+                  <img src="<%= yelper.image_url %>" alt="profile image">
+                  <div class="card-content">
+                    <p class="post-author"><%= yelper.name %></p>
+                    <h4><%= yelper.location %></h4>
+                      <a href="#">Read on...</a>
+                    </p>
+                  </div>
+                </article>
+              </div>
+             <% end %>
+          </div>
+
+
+<!-- <ul class="small-block-grid-3">
+  <% @yelpers.each do |yelper| %>
+    <li><img src="<%= yelper.image_url %>" alt="profile image"></li>
+    <li><h3><%= yelper.name %></h3></li>
+    <li><h5><%= yelper.location %></h5></li>
+  <% end %>
+</ul> -->
+
+<!-- </div>
 </div>
-</div>
-</div>
+</div> -->
