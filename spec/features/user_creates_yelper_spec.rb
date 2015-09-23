@@ -13,9 +13,9 @@ feature "user creates yelper", %{
     click_button "Submit"
 
     doc = Nokogiri::HTML(open(link_url,
-                              "User-Agent" => "Ruby/#{RUBY_VERSION}",
-                              "From" => "foo@bar.invalid",
-                              "Referer" => "http://www.ruby-lang.org/"))
+                         "User-Agent" => "Ruby/#{RUBY_VERSION}",
+                         "From" => "foo@bar.invalid",
+                         "Referer" => "http://www.ruby-lang.org/"))
 
     location = doc.css(".user-location").text
     name = doc.css(".user-profile_info h1").text
