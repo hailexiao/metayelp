@@ -53,10 +53,9 @@ class YelpersController < ApplicationController
     p[:yelper][:name] = doc.css(".user-profile_info h1").text
     p[:yelper][:location] = doc.css(".user-location").text
     p[:yelper][:uid] = find_profile_id(yelper_params[:uid])
-    p[:yelper][:image_url] = doc.css(
-      ".photo-slideshow_image img").attr('src').text
-    p[:yelper][:number_of_reviews] = doc.css(
-      ".review-count span strong").text
+    p[:yelper][:image_url] = doc.css(".photo-slideshow_image img").
+                                      attr("src").text
+    p[:yelper][:number_of_reviews] = doc.css(".review-count span strong").text
     p
   end
 
