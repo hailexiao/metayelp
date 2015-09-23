@@ -1,8 +1,17 @@
-<h1> Yelpers </h1>
+<div class= "title">
+  <h1 class="text-center"> Yelpers </h1>
+</div>
 
-<ul>
+<div class="row">
   <% @yelpers.each do |yelper| %>
-    <%= yelper.name %>
-    <%= yelper.location %>
-  <% end %>
-</ul>
+  <div class="medium-6 large-4 columns">
+    <article class="yelper-card">
+      <%= link_to image_tag(yelper.image_url), yelper_path(yelper)%>
+      <div class="card-content">
+        <p class="yelper-name"><%= link_to yelper.name, yelper_path(yelper) %></p>
+        <h4><%= yelper.location %></h4>
+      </div>
+    </article>
+  </div>
+ <% end %>
+</div>
