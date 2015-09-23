@@ -1,4 +1,4 @@
-require 'open-uri'
+require "open-uri"
 
 class YelpersController < ApplicationController
   def index
@@ -63,6 +63,6 @@ class YelpersController < ApplicationController
 
   def yelper_params
     params.require(:yelper).permit(:name, :location, :image_url,
-      :number_of_reviews, :uid)
+                                    :number_of_reviews, :uid)
   end
 end
