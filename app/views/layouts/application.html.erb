@@ -3,6 +3,8 @@
 <head>
   <title>Metayelp</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <!-- <link rel="stylesheet" href="foundation-icons/foundation-icons.css" /> -->
+  <%= stylesheet_link_tag '/foundation-icons/foundation-icons.css', media: 'all' %>
   <%= csrf_meta_tags %>
   <script src="https://use.typekit.net/iwz8lvx.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -19,6 +21,7 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+          <li><%= link_to 'Profile', user_path(current_user) %></li>
           <li><%= link_to 'Edit My Account', edit_user_registration_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
