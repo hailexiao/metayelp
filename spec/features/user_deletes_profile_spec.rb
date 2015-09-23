@@ -32,7 +32,7 @@ feature 'delete user account', %{
     alert.accept
 
     expect(page).to have_content
-      'Bye! Your account has been successfully cancelled.'
+    'Bye! Your account has been successfully cancelled.'
   end
 
   after(:all) do
