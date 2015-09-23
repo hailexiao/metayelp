@@ -1,0 +1,25 @@
+<br><br><br>
+
+<div class="row bump">
+   <div class="small-12 large-6 columns">
+      <div class="row">
+         <div class="profile-card">
+            <div class="small-12 large-4 columns">
+                  <img src="<%= @yelper.image_url %>" alt="profile image">
+            </div>
+            <div class="small-12 large-8 columns">
+               <a href="http://www.yelp.com/user_details?userid=<%= @yelper.uid %>"><h4><%= @yelper.name %></h4></a>
+               <p><i class="fi-globe"></i><span><%= @yelper.location %></span></p>
+               <p><i class="fi-page"></i><a href="http://www.yelp.com/user_details?userid=<%= @yelper.uid %>">Profile Page</a></p>
+            </div>
+            <div class="row collapse">
+               <ul class="button-group even-3">
+                  <li><a href="#" class="button"> Reviews <span><%= @yelper.number_of_reviews %> </span></a></li>
+                  <li><a href="#" class="button">  Fans <span>432 </span></a></li>
+
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
