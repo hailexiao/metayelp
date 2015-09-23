@@ -43,6 +43,7 @@ feature 'edit user profile', %{
     expect(first_menu_item.text).to have_content 'Edit My Account'
 
     click_link 'Edit My Account'
+
     fill_in 'Password', with: 'bbbb'
     fill_in 'Password confirmation', with: 'bbbb'
     fill_in 'Current password', with: user.password

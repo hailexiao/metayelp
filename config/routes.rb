@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   root 'yelpers#index'
   devise_for :users
 
