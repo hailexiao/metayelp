@@ -36,7 +36,8 @@ class YelpersController < ApplicationController
   def crawl(id)
     profile_id = find_profile_id(id)
     profile_url = "http://www.yelp.com/user_details?userid=" + profile_id
-    Nokogiri::HTML(open(profile_url,
+    Nokogiri::HTML(open
+                   (profile_url,
                    "User-Agent" => "Ruby/#{RUBY_VERSION}",
                    "From" => "foo@bar.invalid",
                    "Referer" => "http://www.ruby-lang.org/"))
@@ -51,7 +52,7 @@ class YelpersController < ApplicationController
     p[:yelper][:location] = doc.css(".user-location").text
     p[:yelper][:uid] = find_profile_id(yelper_params[:uid])
     p[:yelper][:image_url] = doc.css(".photo-slideshow_image img").
-                                     attr("src").text
+      attr("src").text
     p[:yelper][:number_of_reviews] = doc.css(".review-count span strong").text
     p
   end
