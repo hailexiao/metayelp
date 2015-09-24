@@ -54,4 +54,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'nokogiri'
 gem 'textacular'
+gem 'carrierwave'
+gem 'fog'
+gem 'simple_form'
+gem 'dotenv-rails'
 gem 'rails_12factor', group: :production
