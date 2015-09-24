@@ -29,6 +29,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'rubocop'
 end
 
 group :development do
@@ -52,3 +53,4 @@ gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
 gem 'nokogiri'
+gem 'rails_12factor', group: :production
