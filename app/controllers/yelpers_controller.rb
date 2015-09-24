@@ -15,11 +15,9 @@ class YelpersController < ApplicationController
 
   def create
     if params[:yelper][:uid].include?("userid=")
+      crawl = CrawlYelp.new(params[:yelper][:uid])
+      @yelper = crawl.add_yelper
 
-      doc = crawl(params[:yelper][:uid])
-      add_params(params, doc)
-
-      @yelper = Yelper.new(yelper_params)
     else
       flash[:notice] = "Please submit a valid Profile URL."
       redirect_to new_yelper_path
@@ -37,31 +35,7 @@ class YelpersController < ApplicationController
 
   private
 
-  def crawl(id)
-    profile_id = find_profile_id(id)
-    profile_url = "http://www.yelp.com/user_details?userid=" + profile_id
-    Nokogiri::HTML(open(profile_url, allow_redirections: :all,
-                        "User-Agent" => "Ruby/#{RUBY_VERSION}",
-                        "From" => "foo@bar.invalid",
-                        "Referer" => "http://www.ruby-lang.org/"))
-  end
-
-  def find_profile_id(id)
-    id.split("userid=").last[0..21]
-  end
-
-  def add_params(p, doc)
-    p[:yelper][:name] = doc.css(".user-profile_info h1").text
-    p[:yelper][:location] = doc.css(".user-location").text
-    p[:yelper][:uid] = find_profile_id(yelper_params[:uid])
-    p[:yelper][:image_url] = doc.css(".photo-slideshow_image img").
-      attr("src").text
-    p[:yelper][:number_of_reviews] = doc.css(".review-count span strong").text
-    p
-  end
-
   def yelper_params
-    params.require(:yelper).permit(:name, :location, :image_url,
-                                   :number_of_reviews, :uid)
+    params.require(:yelper).permit(:uid)
   end
 end
