@@ -2,7 +2,11 @@ require "open-uri"
 
 class YelpersController < ApplicationController
   def index
-    @yelpers = Yelper.all
+    if params[:search]
+      @yelpers = Yelper.fuzzy_search(params[:search])
+    else
+      @yelpers = Yelper.all.order('number_of_reviews DESC')
+    end
   end
 
   def show
