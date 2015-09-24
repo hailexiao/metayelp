@@ -6,10 +6,6 @@ feature 'delete user account', %{
   So that I am no longer associated with the app
 } do
 
-  before(:all) do
-    Capybara.current_driver = :selenium
-  end
-
   scenario 'user logs in and deletes account' do
 
     user = FactoryGirl.create(:user)
@@ -27,16 +23,8 @@ feature 'delete user account', %{
     visit edit_user_registration_path
     click_button 'Cancel my account'
 
-    alert = page.driver.browser.switch_to.alert
-    expect(alert.text).to eq('Are you sure?')
-    alert.accept
 
     expect(page).to have_content
     'Bye! Your account has been successfully cancelled.'
   end
-
-  after(:all) do
-    Capybara.use_default_driver
-  end
-
 end

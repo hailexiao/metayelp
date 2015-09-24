@@ -29,6 +29,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'rubocop'
 end
 
 group :development do
@@ -56,3 +57,4 @@ gem 'carrierwave'
 gem 'fog'
 gem 'simple_form'
 gem 'dotenv-rails'
+gem 'rails_12factor', group: :production

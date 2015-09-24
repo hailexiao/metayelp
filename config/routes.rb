@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'yelpers#index'
   devise_for :users
 
-  resources :yelpers, only: [:index, :new, :create, :show]
+  resources :yelpers, only: [:index, :new, :create, :show] do
+    resources :reviews, only: [:create]
+  end
   resources :users, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
