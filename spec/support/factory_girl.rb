@@ -8,6 +8,7 @@ FactoryGirl.define do
     last_name Faker::Name.name.split(' ')[1]
     password 'password'
     password_confirmation 'password'
+    role "member"
   end
 
   factory :yelper do

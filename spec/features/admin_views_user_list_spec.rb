@@ -14,6 +14,7 @@ feature 'user signs out', %{
     admin = FactoryGirl.create(:user, role: "admin")
     user = FactoryGirl.create(:user)
 
+
     visit new_user_session_path
 
     fill_in 'Email', with: admin.email
@@ -22,9 +23,8 @@ feature 'user signs out', %{
     click_button 'Log in'
 
     visit admin_users_path
-
-    expect(page).to have_content(user.name)
-
+  
+    expect(page).to have_content(user.first_name)
   end
 
   scenario 'non-admin visits users index' do
