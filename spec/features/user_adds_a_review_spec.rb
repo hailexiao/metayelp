@@ -6,12 +6,11 @@ feature 'add a review', %{
   So others will know if they are good
   at yelping.
 } do
-  #Acceptance Criteria
+  # Acceptance Criteria
   # [*] An unauthenticated user cannot add a review
   # [] An authenticated user can create a new review
   # [] The new review appears on the yelper's show page
   scenario 'an unauthenticated user tries to add a review' do
-
     yelper = FactoryGirl.create(:yelper)
 
     visit yelper_path(yelper)
@@ -20,11 +19,11 @@ feature 'add a review', %{
 
     click_button 'Submit Review'
 
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
+    expect(page).to have_content("You need to sign in or
+                                  sign up before continuing.")
   end
 
   scenario 'an authenticated user enters a blank review' do
-
     yelper = FactoryGirl.create(:yelper)
     user = FactoryGirl.create(:user)
 
@@ -39,11 +38,12 @@ feature 'add a review', %{
 
     click_button 'Submit Review'
 
-    expect(page).to have_content("Rating is not a number. Rating is not included in the list. Body can't be blank. Body is too short (minimum is 25 characters)")
+    expect(page).to have_content("Rating is not a number. Rating is not included
+                                  in the list. Body can't be blank.
+                                  Body is too short (minimum is 25 characters)")
   end
 
   scenario 'an authenticated user submits a properly formatted review' do
-
     yelper = FactoryGirl.create(:yelper)
     user = FactoryGirl.create(:user)
 
@@ -56,14 +56,14 @@ feature 'add a review', %{
 
     visit yelper_path(yelper)
     fill_in "Rating", with: 5
-    fill_in "Body", with: "This reviewer is so totally elite and stuff. It's great."
+    fill_in "Body", with: "This reviewer is so totally elite and
+                           stuff. It's great."
 
     click_button 'Submit Review'
 
     expect(page).to have_content("Review added!")
     expect(page).to have_content(5)
-    expect(page).to have_content("This reviewer is so totally elite and stuff. It's great.")
+    expect(page).to have_content("This reviewer is so totally elite and
+                                  stuff. It's great.")
   end
-
-
 end
