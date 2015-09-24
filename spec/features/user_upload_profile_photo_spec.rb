@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user photo profile', %Q{
+feature 'user photo profile', %{
   As a reviewer of Yelpers
   I want to upload a profile photo
   So that I can let others see how cool I am
