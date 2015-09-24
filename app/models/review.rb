@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
 
   validates :rating, presence: true
   validates :rating, numericality: { only_integer: true }
-  validates :rating, inclusion: { in: 1..5 }
+  validates :rating, inclusion: { in: %w(1 2 3 4 5) }
 
   validates :body, presence: true
   validates :body, length: { minimum: 25, maximum: 5000 }
