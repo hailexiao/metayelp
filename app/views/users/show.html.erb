@@ -2,6 +2,9 @@
    <div class="small-12 large-6 columns">
       <div class="row">
          <div class="profile-card">
+           <div class="small-12 large-4 columns">
+                 <img src="<%= @user.profile_photo %>" alt="profile image">
+           </div>
             <div class="small-12 large-8 columns">
                <h4><%= @user.first_name.titleize + " " +
                 @user.last_name[0].upcase %></h4>
