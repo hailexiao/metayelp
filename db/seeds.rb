@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 Yelper.create!(name: "Jessica L.", location: "Boston, MA",
                number_of_reviews: 87,
                image_url:
