@@ -15,8 +15,8 @@ feature 'add a review', %{
     yelper = FactoryGirl.create(:yelper)
 
     visit yelper_path(yelper)
-    click_on('id-of-four')
-    fill_in "Review", with: "So elite."
+    fill_in :rating, with: 5
+    fill_in "Body", with: "So elite."
 
     click_button 'Submit Review'
 

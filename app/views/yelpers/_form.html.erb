@@ -1,9 +1,10 @@
 <div class="large-12">
 
   <%= form_for [@yelper, @review] do |f| %>
-    <%= f.label :Rating %>
-    <%= number_field_tag :rating, in: 1...5 %>
+    <%= f.label :rating %>
+    <%= number_field_tag :rating, nil, in: 1...6 %>
 
+    <%= f.label :body %>
     <%= f.text_field :body %>
 
     <%= f.submit "Submit Review" %>
