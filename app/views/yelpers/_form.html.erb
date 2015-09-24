@@ -2,7 +2,7 @@
 
   <%= form_for [@yelper, @review] do |f| %>
     <%= f.label :rating %>
-    <%= f.number_field :rating, in: 1...6 %>
+    <%= f.number_field :rating, in: Review::RATINGS %>
 
     <%= f.label :body %>
     <%= f.text_field :body %>

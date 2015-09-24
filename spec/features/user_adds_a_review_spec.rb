@@ -20,7 +20,7 @@ feature 'add a review', %{
     click_button 'Submit Review'
 
     expect(page).to have_content("You need to sign in or
-                                  sign up before continuing.")
+      sign up before continuing.")
   end
 
   scenario 'an authenticated user enters a blank review' do
@@ -38,9 +38,7 @@ feature 'add a review', %{
 
     click_button 'Submit Review'
 
-    expect(page).to have_content("Rating is not a number. Rating is not included
-                                  in the list. Body can't be blank.
-                                  Body is too short (minimum is 25 characters)")
+    expect(page).to have_content("can't be blank")
   end
 
   scenario 'an authenticated user submits a properly formatted review' do
@@ -57,13 +55,13 @@ feature 'add a review', %{
     visit yelper_path(yelper)
     fill_in "Rating", with: 5
     fill_in "Body", with: "This reviewer is so totally elite and
-                           stuff. It's great."
+                    stuff. It's great."
 
     click_button 'Submit Review'
 
     expect(page).to have_content("Review added!")
     expect(page).to have_content(5)
     expect(page).to have_content("This reviewer is so totally elite and
-                                  stuff. It's great.")
+      stuff. It's great.")
   end
 end
