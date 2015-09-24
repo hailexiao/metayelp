@@ -29,6 +29,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'rubocop'
 end
 
 group :development do
