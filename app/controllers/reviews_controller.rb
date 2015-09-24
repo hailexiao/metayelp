@@ -7,8 +7,7 @@ class ReviewsController < ApplicationController
     @review.yelper = @yelper
     @review.user = current_user
 
-   
-   if @review.save
+    if @review.save
       flash[:notice] = 'Review added!'
       redirect_to yelper_path(@yelper)
     else
