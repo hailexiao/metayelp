@@ -18,4 +18,11 @@ FactoryGirl.define do
     uid Faker::Lorem.characters(22)
   end
 
+  factory :review do
+    yelper
+    user
+    rating "4"
+    body "ZOMG I LOVE THIS YELPER. His or her reviews move me in ways I didn't feel was possible."
+  end
+
 end
