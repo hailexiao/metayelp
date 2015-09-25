@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :yelpers, only: [:index, :new, :create, :show] do
     resources :reviews, only: [:create]
+    post 'upvote', to: 'votes#create_upvote'
+    post 'downvote', to: 'votes#create_downvote'
   end
   resources :users, only: [:show]
 

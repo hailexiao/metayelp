@@ -14,11 +14,11 @@ feature 'user can vote on reviews', %{
 
   scenario 'an unauthenticated user tries to vote' do
     review = FactoryGirl.create(:review)
-    yelper = review.yelpers
+    yelper = review.yelper
 
     visit yelper_path(yelper)
 
-    click_link('upvote')
+    click_link("bullshit-class")
 
     expect(page).to have_content 'You need to sign in or sign up'
   end

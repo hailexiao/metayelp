@@ -9,7 +9,7 @@
             </div>
             <div class="small-12 large-8 columns">
                <a href="http://www.yelp.com/user_details?userid=<%= @yelper.uid %>"><h4><%= @yelper.name %></h4></a>
-               <p><i class="fi-globe"></i><span><%= @yelper.location %></span></p>
+               <p><i class="fi-map"></i><span><%= @yelper.location %></span></p>
                <p><i class="fi-page"></i><a href="http://www.yelp.com/user_details?userid=<%= @yelper.uid %>">Profile Page</a></p>
             </div>
             <div class="row collapse">
@@ -29,4 +29,10 @@
 <% @yelper.reviews.each do |review| %>
   <%= review.rating %>
   <%= review.body %>
-<% end %> 
+  <p><a href=# data-user-id ="<%= current_user %>" data-review-id= "<%= review.id %>"
+  id="up-vote"><i class="fi-arrow-up"></i></a></p>
+  <p><a href=# data-user-id ="<%= current_user %>" data-review-id ="<%= review.id %>"  
+      id="down-vote"><i class="fi-arrow-down"></i></a></p>
+  <p> <%= review.upvotes.count %> </p>
+  <p> <%= review.downvotes.count %> </p>
+<% end %>
