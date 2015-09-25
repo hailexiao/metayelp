@@ -27,13 +27,13 @@ SimpleForm.setup do |config|
     end
 
     b.wrapper :right_input_wrapper, tag: 'div', class: 'small-9 columns' do |ba|
-        ba.use :input
-        ba.use :error, wrap_with: { tag: :small, class: :error }
+      ba.use :input
+      ba.use :error, wrap_with: { tag: :small, class: :error }
     end
   end
 
   config.wrappers :horizontal_radio_and_checkboxes, tag: 'div',
-    class: 'row' do |b|
+                  class: 'row' do |b|
     b.use :html5
     b.optional :readonly
 
