@@ -29,6 +29,24 @@
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
+
+      <ul class="left">
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <ul>
+              <%= form_tag(yelpers_path, method: "get", id: "search-form") do %>
+              <li>
+              <%= text_field_tag :search, params[:search], placeholder: "Find a Yelper" %>
+              </li>
+            </div>
+            <div class="large-4 small-3 columns">
+              <%= submit_tag "Search", name: nil, class: "alert button expand" %>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      </ul>
     </section>
   </nav>
 

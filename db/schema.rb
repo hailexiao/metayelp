@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924175650) do
+ActiveRecord::Schema.define(version: 20150924182043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "reviews", force: :cascade do |t|
     t.text     "body",       null: false
@@ -40,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150924175650) do
     t.datetime "updated_at",                                null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "role",                   default: "member", null: false
     t.string   "profile_photo"
+    t.string   "role",                   default: "member", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

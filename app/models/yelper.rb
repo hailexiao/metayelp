@@ -11,4 +11,9 @@ class Yelper < ActiveRecord::Base
   validates :image_url, presence: true
 
   validates :uid, presence: true
+
+  def self.search(query)
+    query_upcase = query.upcase
+    where("upper(name) like ?", "%#{query_upcase}%")
+  end
 end
