@@ -3,9 +3,9 @@ require "open-uri"
 class YelpersController < ApplicationController
   def index
     if params[:search]
-      @yelpers = Yelper.fuzzy_search(params[:by].to_sym => params[:search])
+      @yelpers = Yelper.search(params[:search]).order('number_of_reviews DESC')
     else
-      @yelpers = Yelper.all.order('number_of_reviews DESC')
+      @yelpers = Yelper.order('number_of_reviews DESC')
     end
   end
 

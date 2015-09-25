@@ -36,12 +36,9 @@
             <div class="large-8 small-9 columns">
               <ul>
               <%= form_tag(yelpers_path, method: "get", id: "search-form") do %>
-                <li>
+              <li>
               <%= text_field_tag :search, params[:search], placeholder: "Find a Yelper" %>
-            </li>
-            <li>
-              <%= select_tag :by, "<option>by name</option>".html_safe %>
-            </li>
+              </li>
             </div>
             <div class="large-4 small-3 columns">
               <%= submit_tag "Search", name: nil, class: "alert button expand" %>
