@@ -26,10 +26,7 @@ SimpleForm.setup do |config|
       ba.use :label, class: 'right inline'
     end
 
-    b.wrapper
-      :right_input_wrapper,
-      tag: :div,
-      class: 'small-9 columns' do |ba|
+    b.wrapper :right_input_wrapper,tag: 'div',class: 'small-9 columns' do |ba|
         ba.use :input
         ba.use :error, wrap_with: { tag: :small, class: :error }
       end
