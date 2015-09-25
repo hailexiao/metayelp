@@ -23,3 +23,10 @@
       </div>
    </div>
 </div>
+
+<%= render "form" %>
+
+<% @yelper.reviews.each do |review| %>
+  <%= review.rating %>
+  <%= review.body %>
+<% end %> 
