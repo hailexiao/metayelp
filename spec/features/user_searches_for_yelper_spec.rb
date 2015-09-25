@@ -5,7 +5,6 @@ feature 'search for a yelper', %{
   I want to search for a Yelper
   So I can review them
 } do
-
   # Acceptance criteria
   # [*] When a user searches for a Yelper by name, it should return
   #  a list of Yelpers who match that name.
@@ -31,6 +30,6 @@ feature 'search for a yelper', %{
     click_button 'Search'
 
     expect(page).to have_link("Would you like to add one?",
-      href: new_yelper_path)
+                               href: new_yelper_path)
   end
 end
