@@ -8,7 +8,7 @@ SimpleForm.setup do |config|
   # Uncomment them to enable hints.
 
   config.wrappers :vertical_form, class: :input, hint_class: :field_with_hint,
-                  error_class: :error do |b|
+                   error_class: :error do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
