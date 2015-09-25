@@ -30,6 +30,6 @@ feature 'search for a yelper', %{
     click_button 'Search'
 
     expect(page).to have_link("Would you like to add one?",
-                               href: new_yelper_path)
+                              href: new_yelper_path)
   end
 end
