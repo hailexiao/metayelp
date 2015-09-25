@@ -1,10 +1,9 @@
 $('#up-vote').on('click', function(e) {
       e.preventDefault();
-
       var $this = $(this);
-      var reviewId = $this.data('data-review-id');
+      var reviewId = $this.attr('data');
 
-      $.post('/reviews/' + reviewId + '/upvote')
+      $.post('/upvote/' + reviewId)
        .done(function(resp) {
           $this.find('.upvote-count').html(resp.upvotes_count);
        })
@@ -14,9 +13,9 @@ $('#down-vote').on('click', function(e) {
       e.preventDefault();
 
       var $this = $(this);
-      var reviewId = $this.data('data-review-id');
+      var reviewId = $this.attr('data');
 
-      $.post('/reviews/' + reviewId + '/downvote')
+      $.post('/downvote/' + reviewId)
        .done(function(resp) {
           $this.find('.downvote-count').html(resp.upvotes_count);
        })

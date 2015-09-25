@@ -18,7 +18,7 @@ feature 'user can vote on reviews', %{
 
     visit yelper_path(yelper)
 
-    click_link("bullshit-class")
+    click_link("up-vote")
 
     expect(page).to have_content 'You need to sign in or sign up'
   end
