@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150925184320) do
     t.integer "review_id"
   end
 
+  add_index "downvotes", ["user_id", "review_id"], name: "index_downvotes_on_user_id_and_review_id", unique: true, using: :btree
+
   create_table "reviews", force: :cascade do |t|
     t.text     "body",       null: false
     t.string   "rating",     null: false
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150925184320) do
     t.integer "user_id"
     t.integer "review_id"
   end
+
+  add_index "upvotes", ["user_id", "review_id"], name: "index_upvotes_on_user_id_and_review_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",       null: false

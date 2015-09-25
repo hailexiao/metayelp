@@ -4,5 +4,6 @@ class CreateUpvotes < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :review
     end
+    add_index :upvotes, [:user_id, :review_id], unique: true
   end
 end
