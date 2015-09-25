@@ -22,7 +22,7 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
 
-    b.wrapper :label_wrapper, tag: :div, class: 'small-3 columns' do |ba|
+    b.wrapper :label_wrapper, tag: 'div', class: 'small-3 columns' do |ba|
       ba.use :label, class: 'right inline'
     end
 
