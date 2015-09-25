@@ -41,8 +41,8 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :horizontal_radio_and_checkboxes, tag: 'div', class: 'row'
-    do |b|
+  config.wrappers :horizontal_radio_and_checkboxes, tag: 'div',
+    class: 'row' do |b|
     b.use :html5
     b.optional :readonly
 
