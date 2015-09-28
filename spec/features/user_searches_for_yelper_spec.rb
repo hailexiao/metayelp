@@ -8,20 +8,21 @@ feature 'search for a yelper', %{
   # Acceptance criteria
   # [*] When a user searches for a Yelper by name, it should return
   #  a list of Yelpers who match that name.
-  # [] When a user searches for a Yelper and there are no matches,
+  # [*] When a user searches for a Yelper and there are no matches,
   #  an alert prompts the user to add that Yelper.
 
   scenario 'user searches for a Yelper by name' do
     yelpers = []
     10.times do
-      yelpers << FactoryGirl.create(:yelper)
+      new_yelper = FactoryGirl.create(:yelper)
+      yelpers << new_yelper
     end
 
     visit yelpers_path
-    fill_in 'search', with: yelpers[2].name
+    fill_in 'search', with: yelpers[9].name
     click_button 'Search'
 
-    expect(page).to have_content(yelpers[2].location)
+    expect(page).to have_content(yelpers[9].location)
   end
 
   scenario 'search returns no matches' do
