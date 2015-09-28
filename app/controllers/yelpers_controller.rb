@@ -3,10 +3,11 @@ require "open-uri"
 class YelpersController < ApplicationController
   def index
     if params[:search]
-      @yelpers = Yelper.search(params[:search]).order('number_of_reviews DESC').page(params[:page]).per(6)
+      @yelpers = Yelper.search(params[:search]).order(
+        'number_of_reviews DESC').page(params[:page]).per(6)
     else
-      # binding.pry
-      @yelpers = Yelper.order('number_of_reviews DESC').page(params[:page]).per(6)
+      @yelpers = Yelper.order(
+        'number_of_reviews DESC').page(params[:page]).per(6)
     end
   end
 
