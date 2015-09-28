@@ -26,4 +26,13 @@ FactoryGirl.define do
     body "ZOMG I LOVE THIS YELPER. His or her reviews move me in ways I didn't feel was possible."
   end
 
+  factory :upvote do
+    user
+    review_id nil
+  end
+
+  factory :downvote do
+    review_id
+    user
+  end
 end

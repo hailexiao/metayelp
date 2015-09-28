@@ -9,7 +9,7 @@ $('#up-vote').on('click', function(e) {
           div.find('.upvote-count').html(resp.upvotes_count);
           div.find('.downvote-count').html(resp.downvotes_count);
        })
-    })
+    })c
 
 $('#down-vote').on('click', function(e) {
       e.preventDefault();

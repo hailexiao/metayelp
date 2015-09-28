@@ -16,11 +16,19 @@ feature 'user can vote on reviews', %{
     review = FactoryGirl.create(:review)
     yelper = review.yelper
 
+    10.times do
+      FactoryGirl.create(:upvote)
+    end
+
+    binding.pry
+
     visit yelper_path(yelper)
 
     click_link("up-vote")
 
-    expect(page).to have_content 'You need to sign in or sign up'
-  end
+    expect(page).to have_content ''
 
+    expect(page).to have_content 'You need to sign in or sign up'
+
+  end
 end
