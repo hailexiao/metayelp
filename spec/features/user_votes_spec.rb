@@ -7,12 +7,12 @@ feature 'user can vote on reviews', %{
 } do
 
   # Acceptance criteria
-  # [] When an unauthenticated user tries to vote, they cannot.
+  # [*] When an unauthenticated user tries to vote, they cannot.
   # [] When an authenticated user upvotes, the review's upvotes goes up by one.
   # [] When an authenticated user downvotes, the review's downvotes goes up by one.
   # [] Users can only vote once per review.
 
-  scenario 'an unauthenticated user tries to vote' do
+  scenario 'an unauthenticated user tries to vote', js: true do
     review = FactoryGirl.create(:review)
     yelper = review.yelper
 
@@ -29,7 +29,7 @@ feature 'user can vote on reviews', %{
     expect(page).to have_content '10'
   end
 
-  scenario "an authenticated user upvotes, the review's upvotes goes up by one." do
+  scenario "an authenticated user upvotes, the review's upvotes goes up by one.", js: true do
     review = FactoryGirl.create(:review)
     yelper = review.yelper
     user = review.user
@@ -47,6 +47,6 @@ feature 'user can vote on reviews', %{
     visit yelper_path(yelper)
 
     click_link("up-vote")
-    expect(page).to have_content '11'
+    expect(page).to have_content("11")
   end
 end

@@ -30,9 +30,9 @@
   <%= review.rating %>
   <%= review.body %>
   <div class = "votes">
-  <a href=# data= "<%= review.id %>"id="up-vote"><i class="fi-arrow-up"></i>
-  <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
-<a href=# data="<%= review.id %>" id="down-vote"><i class="fi-arrow-down"></i>
-  <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
-</div>
-<% end %>
+    <a href="/upvote/<%= review.id %>" data= "<%= review.id %>"id="up-vote"><i class="fi-arrow-up"></i>
+    <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
+    <a href="/downvote/<%= review.id %>" data="<%= review.id %>" id="down-vote"><i class="fi-arrow-down"></i>
+    <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
+  </div>
+<% end %> 
