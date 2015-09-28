@@ -3,9 +3,10 @@ require "open-uri"
 class YelpersController < ApplicationController
   def index
     if params[:search]
-      @yelpers = Yelper.search(params[:search]).order('number_of_reviews DESC')
+      @yelpers = Yelper.search(params[:search]).order('number_of_reviews DESC').page(params[:page]).per(6)
     else
-      @yelpers = Yelper.order('number_of_reviews DESC')
+      # binding.pry
+      @yelpers = Yelper.order('number_of_reviews DESC').page(params[:page]).per(6)
     end
   end
 
@@ -33,7 +34,7 @@ class YelpersController < ApplicationController
       flash[:notice] = "Yelper added!"
       redirect_to yelper_path(@yelper.id)
     else
-      flash[:notice] = "Unable to retrieve profile page."
+      flash[:error] = @yelper.errors.full_messages.join (". ")
       render :new
     end
   end

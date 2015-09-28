@@ -4,9 +4,14 @@ Rails.application.routes.draw do
   root 'yelpers#index'
   devise_for :users
 
-  resources :yelpers, only: [:index, :new, :create, :show] do
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+  resources :yelpers, only: [:index, :new, :create, :show], concerns: :paginatable do
     resources :reviews, only: [:create]
   end
+
   resources :users, only: [:show]
 
   namespace :admin do
