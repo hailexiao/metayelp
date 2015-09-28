@@ -17,18 +17,36 @@ feature 'user can vote on reviews', %{
     yelper = review.yelper
 
     10.times do
-      FactoryGirl.create(:upvote)
+      FactoryGirl.create(:upvote, review_id: review.id)
     end
 
-    binding.pry
+    visit yelper_path(yelper)
+
+    expect(page).to have_content '10'
+
+    click_link("up-vote")
+
+    expect(page).to have_content '10'
+  end
+
+  scenario "an authenticated user upvotes, the review's upvotes goes up by one." do
+    review = FactoryGirl.create(:review)
+    yelper = review.yelper
+    user = review.user
+
+    10.times do
+      FactoryGirl.create(:upvote, review_id: review.id)
+    end
+
+    visit new_user_session_path
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
 
     visit yelper_path(yelper)
 
     click_link("up-vote")
-
-    expect(page).to have_content ''
-
-    expect(page).to have_content 'You need to sign in or sign up'
-
+    expect(page).to have_content '11'
   end
 end
