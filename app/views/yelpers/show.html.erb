@@ -29,8 +29,10 @@
 <% @yelper.reviews.each do |review| %>
   <%= review.rating %>
   <%= review.body %>
-  <p><a href=# data= "<%= review.id %>"id="up-vote"><i class="fi-arrow-up"></i></a></p>
-  <p><a href=# data="<%= review.id %>" id="down-vote"><i class="fi-arrow-down"></i></a></p>
-  <p class="upvote-count"> <%= review.upvotes.count %> </p>
-  <p class="downvote-count"> <%= review.downvotes.count %> </p>
+  <div class = "votes">
+  <a href=# data= "<%= review.id %>"id="up-vote"><i class="fi-arrow-up"></i>
+  <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
+<a href=# data="<%= review.id %>" id="down-vote"><i class="fi-arrow-down"></i>
+  <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
+</div>
 <% end %>
