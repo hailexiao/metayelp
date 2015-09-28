@@ -11,6 +11,7 @@ class Yelper < ActiveRecord::Base
   validates :image_url, presence: true
 
   validates :uid, presence: true
+  validates :uid, uniqueness: { message: " error: Yelper already in system." }
 
   def self.search(query)
     query_upcase = query.upcase
