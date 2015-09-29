@@ -26,6 +26,5 @@ feature 'admin can delete yelper', %{
 
     expect(page).to have_content('Yelper deleted.')
 
-    
   end
 end
