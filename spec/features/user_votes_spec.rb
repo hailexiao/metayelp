@@ -49,4 +49,25 @@ feature 'user can vote on reviews', %{
     click_link("up-vote")
     expect(page).to have_content("11")
   end
+
+  scenario "an authenticated user downvotes, the review's downvotes goes down by one.", js: true do
+    review = FactoryGirl.create(:review)
+    yelper = review.yelper
+    user = review.user
+
+    10.times do
+      FactoryGirl.create(:upvote, review_id: review.id)
+    end
+
+    visit new_user_session_path
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+
+    visit yelper_path(yelper)
+
+    click_link("down-vote")
+    expect(page).to have_content("9")
+  end
 end
