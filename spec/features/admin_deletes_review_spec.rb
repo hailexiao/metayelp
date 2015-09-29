@@ -7,17 +7,14 @@ feature 'admin can delete reviews', %{
   So the world can be spared from harm
 } do
 
-# Acceptance Criteria
-#   [] Admin can delete a review from a Yelper's page
+  # Acceptance Criteria
+  # [] Admin can delete a review from a Yelper's page
 
   scenario 'admin deletes review' do
     yelper = FactoryGirl.create(:yelper)
-    admin = FactoryGirl.create(:user,
-                               role: "admin")
+    admin = FactoryGirl.create(:user, role: "admin")
     user = FactoryGirl.create(:user)
-    review = FactoryGirl.create(:review,
-                                yelper: yelper,
-                                user: user)
+    review = FactoryGirl.create(:review, yelper: yelper, user: user)
 
     visit new_user_session_path
 
@@ -32,8 +29,6 @@ feature 'admin can delete reviews', %{
 
     expect(page).to_not have_content(review.body)
 
-
   end
-
 
 end
