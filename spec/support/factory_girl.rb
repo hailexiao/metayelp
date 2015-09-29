@@ -20,7 +20,20 @@ FactoryGirl.define do
   end
 
   factory :review do
-    body { Faker::Lorem.paragraph(4) }
-    rating { Random.rand(5) + 1 }
+    yelper
+    user
+    rating "4"
+    body "ZOMG I LOVE THIS YELPER. His or her reviews move
+          me in ways I didn't feel was possible."
+  end
+
+  factory :upvote do
+    user
+    review
+  end
+
+  factory :downvote do
+    user
+    review
   end
 end
