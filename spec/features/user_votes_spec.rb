@@ -4,7 +4,7 @@ feature 'user can vote on reviews', %{
   As a reviewer of Yelpers
   I want to vote on reviews of yelpers
   So I can let people know which yelper reviewers are
-  the best at leaving yelp reviews.
+  the best at yelp reviewing.
 } do
   # Acceptance criteria
   # [*] When an unauthenticated user tries to vote, they cannot.
