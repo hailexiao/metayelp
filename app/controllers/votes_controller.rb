@@ -10,7 +10,7 @@ class VotesController < ApplicationController
         Downvote.destroy(down_vote.id)
       end
         render json: { upvotes_count: @review.upvotes.count,
-                      downvotes_count: @review.downvotes.count }
+                       downvotes_count: @review.downvotes.count }
     else
       render nothing: true, status: 403
     end
@@ -37,5 +37,4 @@ class VotesController < ApplicationController
   def set_review
     @review = Review.find(params[:review_id])
   end
-
 end
