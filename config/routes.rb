@@ -8,13 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :yelpers,
-<<<<<<< HEAD
-    only: [:index, :new, :create, :show], concerns: :paginatable do
-    resources :reviews, only: [:create, :update, :show] do
-=======
     only: [:index, :new, :create, :show, :destroy], concerns: :paginatable do
-    resources :reviews, only: [:create, :destroy] do
->>>>>>> master
+    resources :reviews, only: [:create, :destroy, :show, :update] do
       resources :upvotes, only: [:create]
       resources :downvotes, only: [:create]
     end

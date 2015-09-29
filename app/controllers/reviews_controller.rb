@@ -24,15 +24,23 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @yelper = Yelper.find(params[:yelper_id])
-    @review.rating = review_params[:rating]
-    @review.body = review_params[:body]
+    if current_user == @review.user || current_user.admin?
+      @yelper = Yelper.find(params[:yelper_id])
+      @review.rating = review_params[:rating]
+      @review.body = review_params[:body]
+    else
+      flash[:error] = "You can only edit your own reviews"
+      redirect_to yelpers_path
+      return
+    end
+
     if @review.save
       redirect_to yelper_path(@yelper, anchor: "#{@review.id}")
     else
       flash[:errors] = @review.errors.full_messages.join(". ")
       render :show
     end
+  end
 
   def destroy
     @review = Review.find(params[:id])

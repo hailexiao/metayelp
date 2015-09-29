@@ -9,7 +9,7 @@ feature 'edit a review', %{
   # [] An unauthenticated user cannot edit a review
   # [] An authenticated user can edit their reviews
   # [] An authenticated user cannot edit other users reviews
-  scenario 'an unauthenticated user wants to edit a review' do
+  scenario "an unauthenticated user wants to edit a review" do
     review = FactoryGirl.create(:review)
     yelper = review.yelper
 
@@ -18,7 +18,7 @@ feature 'edit a review', %{
 
     expect(page).not_to have_content("Edit Review")
   end
-  scenario 'a user tries to edit their review' do
+  scenario "a logged in user tries to edit their review" do
     review = FactoryGirl.create(:review)
     yelper = review.yelper
     user = review.user
@@ -31,10 +31,28 @@ feature 'edit a review', %{
     fill_in "Body", with: "My feelings on this yelper have soured.
                           His reviews suck."
     fill_in "Rating", with: 1
-    click_button("Update Review")
+    click_button("Submit Review")
 
     expect(page).to have_content(yelper.name)
     expect(page).to have_content("My feelings on this yelper have soured.
                           His reviews suck.")
+  end
+
+  scenario "a logged in user tries to edit another user's review" do
+    review = FactoryGirl.create(:review)
+    review_two = FactoryGirl.create(:review)
+    yelper = review_two.yelper
+    user = review.user
+
+    sign_in_as(user)
+
+    visit yelper_review_path(yelper_id: yelper.id, id: review_two.id)
+
+    fill_in "Body", with: "My feelings on this yelper have soured.
+                          His reviews suck."
+    fill_in "Rating", with: 1
+    click_button("Submit Review")
+
+    expect(page).to have_content("You can only edit your own reviews")
   end
 end

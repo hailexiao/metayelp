@@ -14,7 +14,7 @@ feature 'user can vote on reviews', %{
   scenario 'an unauthenticated user tries to vote', js: true do
     review = FactoryGirl.create(:review)
     yelper = review.yelper
-
+    binding.pry
     10.times do
       FactoryGirl.create(:upvote, review: review)
     end
