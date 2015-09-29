@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/show'
-
   root 'yelpers#index'
+
   devise_for :users
 
   concern :paginatable do
@@ -9,8 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :yelpers,
-    only: [:index, :new, :create, :show], concerns: :paginatable do
-    resources :reviews, only: [:create]
+    only: [:index, :new, :create, :show, :destroy], concerns: :paginatable do
+    resources :reviews, only: [:create, :destroy]
   end
 
   resources :users, only: [:show]

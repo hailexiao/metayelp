@@ -1,6 +1,7 @@
 require "open-uri"
 
 class YelpersController < ApplicationController
+  before_action :authorize_user, only: [:destroy]
   def index
     if params[:search]
       @yelpers = Yelper.search(params[:search]).order(
@@ -40,9 +41,21 @@ class YelpersController < ApplicationController
     end
   end
 
+  def destroy
+    Yelper.find(params[:id]).destroy
+    flash[:success] = "Yelper deleted."
+    redirect_to yelpers_path
+  end
+
   private
 
   def yelper_params
     params.require(:yelper).permit(:uid)
+  end
+
+  def authorize_user
+    unless current_user.admin?
+      raise ActionController:RoutingError.new("Not Found")
+    end
   end
 end
