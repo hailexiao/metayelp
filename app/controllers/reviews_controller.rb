@@ -6,13 +6,31 @@ class ReviewsController < ApplicationController
     @yelper = Yelper.find(params[:yelper_id])
     @review.yelper = @yelper
     @review.user = current_user
-    
+
     if @review.save
       flash[:notice] = 'Review added!'
       redirect_to yelper_path(@yelper)
     else
       flash[:errors] = @review.errors.full_messages.join(". ")
       redirect_to yelper_path(@yelper)
+    end
+  end
+
+  def show
+    @yelper = Yelper.find(params[:yelper_id])
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @yelper = Yelper.find(params[:yelper_id])
+    @review.rating = review_params[:rating]
+    @review.body = review_params[:body]
+    if @review.save
+      redirect_to yelper_path(@yelper, anchor: "#{@review.id}")
+    else
+      flash[:errors] = @review.errors.full_messages.join(". ")
+      render :show
     end
   end
 

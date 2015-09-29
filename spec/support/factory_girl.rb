@@ -27,7 +27,7 @@ FactoryGirl.define do
           me in ways I didn't feel was possible."
   end
 
-  factory :downvote do
+  factory :upvote do
     user
     review
   end
