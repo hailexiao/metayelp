@@ -1,4 +1,5 @@
-ActiveRecord::Schema.define(version: 20150925184320) do
+
+ActiveRecord::Schema.define(version: 20150928211402) do
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
 
@@ -56,5 +57,7 @@ ActiveRecord::Schema.define(version: 20150925184320) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  add_index "yelpers", ["uid"], name: "index_yelpers_on_uid", unique: true, using: :btree
 
 end
