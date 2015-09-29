@@ -23,7 +23,10 @@ feature 'user can vote on reviews', %{
 
     expect(page).to have_content '10'
 
-    click_link("up-vote")
+    within(".votes") do
+      find('#up-vote').click
+    end
+
     expect(page).to have_content '10'
   end
 
@@ -40,7 +43,10 @@ feature 'user can vote on reviews', %{
 
     visit yelper_path(yelper)
 
-    click_link("up-vote")
+    within(".votes") do
+      find('#up-vote').click
+    end
+
     expect(page).to have_content("11")
   end
 
@@ -56,7 +62,10 @@ feature 'user can vote on reviews', %{
     sign_in_as(user)
     visit yelper_path(yelper)
 
-    click_link("down-vote")
+    within(".votes") do
+      find('#down-vote').click
+    end
+
     expect(page).to have_content("1")
   end
 
@@ -72,9 +81,16 @@ feature 'user can vote on reviews', %{
     sign_in_as(user)
     visit yelper_path(yelper)
 
-    click_link("down-vote")
+    within(".votes") do
+      find('#up-vote').click
+    end
+
     expect(page).to have_content("1")
-    click_link("down-vote")
+
+    within(".votes") do
+      find('#up-vote').click
+    end
+
     expect(page).to have_content("1")
   end
 
@@ -90,9 +106,16 @@ feature 'user can vote on reviews', %{
     sign_in_as(user)
     visit yelper_path(yelper)
 
-    click_link("up-vote")
+    within(".votes") do
+      find('#up-vote').click
+    end
+
     expect(page).to have_content("11")
-    click_link("down-vote")
+
+    within(".votes") do
+      find('#down-vote').click
+    end
+
     expect(page).to have_content("1")
     expect(page).to have_content("10")
   end
