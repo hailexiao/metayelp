@@ -4,17 +4,16 @@ $('#up-vote').on('click', function(e) {
       var reviewId = $this.attr('data');
 
        $.ajax({
-         method: "POST",
+         method: 'POST',
          url: '/upvote/' + reviewId,
-         dataType: "json"
+         dataType: 'json'
        })
-
        .done(function(resp) {
           var div = $this.parent()
-          div.find('.upvote-count').html(resp.upvotes_count);
-          div.find('.downvote-count').html(resp.downvotes_count);
-       })
-    })
+          div.find('.upvote-count').html(resp.upvotesCount);
+          div.find('.downvote-count').html(resp.downvotesCount);
+       });
+    });
 
 $('#down-vote').on('click', function(e) {
       e.preventDefault();
@@ -23,14 +22,13 @@ $('#down-vote').on('click', function(e) {
       var reviewId = $this.attr('data');
 
       $.ajax({
-        method: "POST",
+        method: 'POST',
         url: '/downvote/' + reviewId,
-        dataType: "json"
+        dataType: 'json'
       })
-
        .done(function(resp) {
           var div = $this.parent()
           div.find('.downvote-count').html(resp.downvotes_count);
           div.find('.upvote-count').html(resp.upvotes_count);
-       })
-    })
+       });
+    });

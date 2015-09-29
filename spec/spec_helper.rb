@@ -3,7 +3,7 @@ require 'database_cleaner'
 
 Coveralls.wear!('rails')
 
- RSpec.configure do |config|
+RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -13,7 +13,7 @@ Coveralls.wear!('rails')
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before(:each, :js => true) do
+  config.before(:each, js: true) do
     DatabaseCleaner.strategy = :truncation
     driver = Selenium::WebDriver.for :firefox
     driver.manage.timeouts.implicit_wait = 10 # seconds

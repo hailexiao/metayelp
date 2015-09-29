@@ -9,8 +9,8 @@ class VotesController < ApplicationController
       unless down_vote.nil?
         Downvote.destroy(down_vote.id)
       end
-        render json: { upvotes_count: @review.upvotes.count,
-                       downvotes_count: @review.downvotes.count }
+      render json: { upvotesCount: @review.upvotes.count,
+                     downvotesCount: @review.downvotes.count }
     else
       render nothing: true, status: 403
     end
@@ -25,8 +25,8 @@ class VotesController < ApplicationController
       unless up_vote.nil?
         Upvote.destroy(up_vote.id)
       end
-      render json: { downvotes_count: @review.downvotes.count,
-                     upvotes_count: @review.upvotes.count }
+      render json: { downvotesCount: @review.downvotes.count,
+                     upvotesCount: @review.upvotes.count }
     else
       render nothing: true, status: 403
     end

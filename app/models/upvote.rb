@@ -5,5 +5,5 @@ class Upvote < ActiveRecord::Base
   validates :user, presence: true
   validates :review, presence: true
 
-  validates_uniqueness_of :user_id, scope: :review_id
+  validates :user, uniqueness: { scope: :review }
 end

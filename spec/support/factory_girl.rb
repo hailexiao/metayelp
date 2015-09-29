@@ -23,7 +23,8 @@ FactoryGirl.define do
     yelper
     user
     rating "4"
-    body "ZOMG I LOVE THIS YELPER. His or her reviews move me in ways I didn't feel was possible."
+    body "ZOMG I LOVE THIS YELPER. His or her reviews move
+          me in ways I didn't feel was possible."
   end
 
   factory :upvote do
