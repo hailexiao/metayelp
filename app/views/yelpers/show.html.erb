@@ -26,9 +26,15 @@
           <div class="small-9 columns">
             <p><%= review.rating %></p>
             <p><%= review.body %></p>
+            <div class = "votes">
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" id="up-vote"><i class="fi-arrow-up"></i>
+              <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" id="down-vote"><i class="fi-arrow-down"></i>
+              <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
+            </div>
           </div>
         </div>
-      <% end %>
+      <% end %>  
     </div>
   </div>
 </div>

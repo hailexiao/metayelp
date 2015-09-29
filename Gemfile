@@ -30,6 +30,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'rubocop'
+  gem 'poltergeist'
 end
 
 group :development do

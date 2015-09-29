@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   resources :yelpers,
     only: [:index, :new, :create, :show], concerns: :paginatable do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create] do
+      resources :upvotes, only: [:create]
+      resources :downvotes, only: [:create]
+    end
   end
 
   resources :users, only: [:show]
