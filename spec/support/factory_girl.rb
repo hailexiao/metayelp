@@ -18,4 +18,9 @@ FactoryGirl.define do
     image_url { Faker::Avatar.image }
     uid { 22.times.map { ('a'..'z').to_a[Random.rand(26)] }.join }
   end
+
+  factory :review do
+    body { Faker::Lorem.paragraph(4) }
+    rating { Random.rand(5) + 1 }
+  end
 end

@@ -20,11 +20,11 @@ feature 'admin can delete users', %{
 
     click_button 'Log in'
 
-    visit admin_user_path(user)
+    visit user_path(user)
 
-    click_link 'Delete User'
+    click_button 'Delete User'
 
-    expect(page).to not_have_link(user.id)
+    expect(page).to have_content('User deleted.')
   end
 
   scenario 'admin tries to delete another admin' do
@@ -38,11 +38,11 @@ feature 'admin can delete users', %{
 
     click_button 'Log in'
 
-    visit admin_user_path(admin2)
+    visit user_path(admin2)
 
-    click_link 'Delete User'
+    click_button 'Delete User'
 
-    expect(page).to have_content("error")
+    expect(page).to have_content("is an admin")
   end
 
 end

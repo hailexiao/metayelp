@@ -1,3 +1,5 @@
+require 'pry'
+
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
@@ -14,6 +16,15 @@ class ReviewsController < ApplicationController
       flash[:errors] = @review.errors.full_messages.join(". ")
       redirect_to yelper_path(@yelper)
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    authorize_user(@review)
+    @yelper = @review.yelper
+    @review.destroy
+    flash[:success] = 'Review deleted.'
+    redirect_to yelper_path(@yelper)
   end
 
   private
