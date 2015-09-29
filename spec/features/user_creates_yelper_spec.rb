@@ -33,4 +33,16 @@ feature "user creates yelper", %{
 
     expect(page).to have_content("Please submit a valid Profile URL.")
   end
+
+  scenario "user adds yelper which already exists" do
+    new_review = FactoryGirl.create(:review)
+    url = "http://www.yelp.com/user_details?userid=ixtEB7AH49Z5u_giDFG0DA"
+    yelper = new_review.yelper.id.to_s
+
+    visit new_yelper_path
+    fill_in "yelper[uid]", with: url + yelper
+    click_button "Submit"
+
+    expect(page).to have_content(review.body)
+  end
 end
