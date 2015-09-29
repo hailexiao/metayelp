@@ -18,7 +18,11 @@ class YelpersController < ApplicationController
     if params[:yelper][:uid].include?("userid=")
       crawl = CrawlYelp.new(params[:yelper][:uid])
       @yelper = crawl.add_yelper
-
+      current_yelper = crawl.yelper_unique_check
+      unless current_yelper.nil?
+        redirect_to yelper_path(current_yelper)
+        return
+      end
     else
       flash[:notice] = "Please submit a valid Profile URL."
       redirect_to new_yelper_path
