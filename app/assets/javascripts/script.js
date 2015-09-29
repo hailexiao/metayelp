@@ -3,9 +3,16 @@ $('#up-vote').on('click', function(e) {
       var $this = $(this);
       var reviewId = $this.attr('data');
 
-      $.post('/upvote/' + reviewId)
+       $.ajax({
+         method: "POST",
+         url: '/upvote/' + reviewId,
+         dataType: "json"
+       })
+
        .done(function(resp) {
-          $this.find('.upvote-count').html(resp.upvotes_count);
+          var div = $this.parent()
+          div.find('.upvote-count').html(resp.upvotes_count);
+          div.find('.downvote-count').html(resp.downvotes_count);
        })
     })
 
@@ -15,8 +22,15 @@ $('#down-vote').on('click', function(e) {
       var $this = $(this);
       var reviewId = $this.attr('data');
 
-      $.post('/downvote/' + reviewId)
+      $.ajax({
+        method: "POST",
+        url: '/downvote/' + reviewId,
+        dataType: "json"
+      })
+
        .done(function(resp) {
-          $this.find('.downvote-count').html(resp.upvotes_count);
+          var div = $this.parent()
+          div.find('.downvote-count').html(resp.downvotes_count);
+          div.find('.upvote-count').html(resp.upvotes_count);
        })
     })

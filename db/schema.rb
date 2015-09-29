@@ -1,4 +1,3 @@
-
 ActiveRecord::Schema.define(version: 20150928211402) do
   enable_extension "plpgsql"
   enable_extension "pg_trgm"

@@ -19,6 +19,9 @@ FactoryGirl.define do
     uid { 22.times.map { ('a'..'z').to_a[Random.rand(26)] }.join }
   end
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d66d52d77b84457b7577eec2327638b85c044897
 
   factory :review do
     yelper
@@ -27,6 +30,18 @@ FactoryGirl.define do
     body "ZOMG I LOVE THIS YELPER. His or her reviews move me in ways I didn't feel was possible."
   end
 
+<<<<<<< HEAD
 =======
 >>>>>>> master
+=======
+  factory :upvote do
+    user
+    review_id nil
+  end
+
+  factory :downvote do
+    review_id nil
+    user
+  end
+>>>>>>> d66d52d77b84457b7577eec2327638b85c044897
 end
