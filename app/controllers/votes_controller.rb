@@ -9,17 +9,8 @@ class VotesController < ApplicationController
       unless down_vote.nil?
         Downvote.destroy(down_vote.id)
       end
-
-      respond_to do |format|
-        format.html do
-          binding.pry
-          redirect_to yelper_path(@review.yelper.id)
-        end
-        format.json do
-          render json: { upvotes_count: @review.upvotes.count,
-                         downvotes_count: @review.downvotes.count }
-        end
-      end
+        render json: { upvotes_count: @review.upvotes.count,
+                      downvotes_count: @review.downvotes.count }
     else
       render nothing: true, status: 403
     end
@@ -34,16 +25,8 @@ class VotesController < ApplicationController
       unless up_vote.nil?
         Upvote.destroy(up_vote.id)
       end
-
-      respond_to do |format|
-        format.html do
-          redirect_to yelper_path(@review.yelper.id)
-        end
-        format.json do
-          render json: { downvotes_count: @review.downvotes.count,
-                         upvotes_count: @review.upvotes.count }
-        end
-      end
+      render json: { downvotes_count: @review.downvotes.count,
+                     upvotes_count: @review.upvotes.count }
     else
       render nothing: true, status: 403
     end
