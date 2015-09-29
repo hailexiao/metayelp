@@ -18,7 +18,7 @@ FactoryGirl.define do
     image_url { Faker::Avatar.image }
     uid { 22.times.map { ('a'..'z').to_a[Random.rand(26)] }.join }
   end
-  
+
   factory :review do
     yelper
     user
@@ -27,13 +27,13 @@ FactoryGirl.define do
           me in ways I didn't feel was possible."
   end
 
-  factory :upvote do
+  factory :downvote do
     user
-    review_id nil
+    review
   end
 
   factory :downvote do
-    review_id nil
     user
+    review
   end
 end
