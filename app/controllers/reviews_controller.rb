@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
 
   def authorize_user(review)
     unless current_user == review.user || current_user.admin?
-      raise ActionController:RoutingError.new("Not Found")
+      raise ActionController::RoutingError.new("Not Found")
     end
   end
 end

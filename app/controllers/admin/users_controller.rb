@@ -12,7 +12,8 @@ class Admin::UsersController < Admin::BaseController
       flash[:success] = "User deleted."
       redirect_to admin_users_path
     else
-      flash[:error] = "#{@user.first_name} #{@user.last_name} is an admin and cannot be deleted."
+      flash[:error] = "#{@user.first_name} #{@user.last_name} is an admin" +
+                      " and cannot be deleted."
       redirect_to user_path(@user)
     end
   end
