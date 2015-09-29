@@ -11,7 +11,14 @@ feature 'admin can delete users', %{
 
   scenario 'admin deletes a user' do
     admin = FactoryGirl.create(:user, role: "admin")
-    user = FactoryGirl.create(:user)
+    review = FactoryGirl.create(:review)
+    review_body = review.body
+    user = review.user
+    yelper = review.yelper
+
+    10.times do
+      FactoryGirl.create(:upvote, review: review)
+    end
 
     visit new_user_session_path
 
@@ -25,6 +32,11 @@ feature 'admin can delete users', %{
     click_button 'Delete User'
 
     expect(page).to have_content('User deleted.')
+
+    visit yelper_path(yelper)
+
+    expect(page).to_not have_content(review_body)
+    expect(page).to_not have_content('10')
   end
 
   scenario 'admin tries to delete another admin' do
