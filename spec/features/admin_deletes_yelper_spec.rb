@@ -25,5 +25,7 @@ feature 'admin can delete yelper', %{
     click_button 'Delete Yelper'
 
     expect(page).to have_content('Yelper deleted.')
+
+    
   end
 end

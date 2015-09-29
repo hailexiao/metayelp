@@ -1,6 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Review, type: :model do
+
+  before (:each) do
+    @review = FactoryGirl.create(:review)
+    5.times do
+      FactoryGirl.create(:downvote, review: @review)
+    end
+    7.times do
+      FactoryGirl.create(:upvote, review: @review)
+    end
+  end
+
+  it "should destroy associated upvotes and downvotes" do
+    upvotes = @review.upvotes
+    downvotes = @review.downvotes
+    @review.destroy
+    expect(upvotes).to be_empty
+    expect(downvotes).to be_empty
+  end
+
+  it { should have_many(:upvotes).dependent(:destroy) }
+  it { should have_many(:downvotes).dependent(:destroy) }
+
   it { should validate_presence_of :rating }
   it { should validate_numericality_of :rating }
   it { should validate_inclusion_of(:rating).in_range(1..5) }
