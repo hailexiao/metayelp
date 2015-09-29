@@ -10,6 +10,15 @@
      <li><a href="#" class="button"> Reviews <span><%= @yelper.number_of_reviews %> </span></a></li>
      <li><a href="#" class="button">  Fans <span>432 </span></a></li>
     </ul>
+    <% if current_user %>
+      <% if current_user.admin? %>
+        <ul class="button-group">
+          <li><%= button_to "Delete Yelper", yelper_path(@yelper),
+              data: { confirm: "Are you sure?" }, method: :delete,
+              class: "button" %></li>
+        </ul>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="small-9 columns">
@@ -26,6 +35,14 @@
           <div class="small-9 columns">
             <p><%= review.rating %></p>
             <p><%= review.body %></p>
+            <% if current_user %>
+              <% if review.user == current_user || current_user.admin? %>
+                <%= button_to "Delete Review",
+                yelper_review_path(review, id: review.id),
+                method: :delete,
+                class: "button" %>
+              <% end %>
+            <% end %>
             <div class = "votes">
               <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" id="up-vote"><i class="fi-arrow-up"></i>
               <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
@@ -34,7 +51,7 @@
             </div>
           </div>
         </div>
-      <% end %>  
+      <% end %>
     </div>
   </div>
 </div>
