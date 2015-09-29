@@ -1,6 +1,12 @@
 body {
 	margin-bottom: 35px;
 }
+
+.user-image {
+	width: 100px;
+	height: auto;
+	margin-top: 15px;
+}
 .top-bar {
 	margin-bottom: 35px;
 }
