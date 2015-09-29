@@ -7,8 +7,7 @@ $('#up-vote').on('click', function(e) {
          method: 'POST',
          url: '/upvote/' + reviewId,
          dataType: 'json'
-       })
-       .done(function(resp) {
+       }).done(function(resp) {
           var div = $this.parent()
           div.find('.upvote-count').html(resp.upvotesCount);
           div.find('.downvote-count').html(resp.downvotesCount);
@@ -25,10 +24,9 @@ $('#down-vote').on('click', function(e) {
         method: 'POST',
         url: '/downvote/' + reviewId,
         dataType: 'json'
-      })
-       .done(function(resp) {
+      }).done(function(resp) {
           var div = $this.parent()
-          div.find('.downvote-count').html(resp.downvotes_count);
-          div.find('.upvote-count').html(resp.upvotes_count);
+          div.find('.downvote-count').html(resp.downvotesCount);
+          div.find('.upvote-count').html(resp.upvotesCount);
        });
     });
