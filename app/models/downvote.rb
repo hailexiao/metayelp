@@ -2,8 +2,6 @@ class Downvote < ActiveRecord::Base
   belongs_to :user
   belongs_to :review
 
-  validates :user_id, presence: true
-  validates :review_id, presence: true
-
-  validates :user, uniqueness: { scope: :review }
+  validates :user, presence: true, uniqueness: { scope: :review }
+  validates :review, presence: true
 end

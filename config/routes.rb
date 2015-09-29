@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   resources :yelpers,
     only: [:index, :new, :create, :show], concerns: :paginatable do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create] do
+      resources :upvotes, only: [:create]
+      resources :downvotes, only: [:create]
+    end
   end
 
   resources :users, only: [:show]
@@ -19,8 +22,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
   end
 
-  post 'upvote/:review_id', to: 'votes#create_upvote'
-  post 'downvote/:review_id', to: 'votes#create_downvote'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

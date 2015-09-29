@@ -1,11 +1,13 @@
 $('#up-vote').on('click', function(e) {
       e.preventDefault();
+
       var $this = $(this);
-      var reviewId = $this.attr('data');
+      var reviewId = $this.attr('data-review-id');
+      var yelperId = $this.attr('data-yelper-id');
 
        $.ajax({
          method: 'POST',
-         url: '/upvote/' + reviewId,
+         url: '/yelpers/' + yelperId + '/reviews/' + reviewId + '/upvotes',
          dataType: 'json'
        }).done(function(resp) {
           var div = $this.parent();
@@ -16,13 +18,13 @@ $('#up-vote').on('click', function(e) {
 
 $('#down-vote').on('click', function(e) {
       e.preventDefault();
-
       var $this = $(this);
-      var reviewId = $this.attr('data');
+      var reviewId = $this.attr('data-review-id');
+      var yelperId = $this.attr('data-yelper-id');
 
       $.ajax({
         method: 'POST',
-        url: '/downvote/' + reviewId,
+        url: '/yelpers/' + yelperId + '/reviews/' + reviewId + '/downvotes',
         dataType: 'json'
       }).done(function(resp) {
           var div = $this.parent();

@@ -29,11 +29,11 @@ FactoryGirl.define do
 
   factory :upvote do
     user
-    review_id nil
+    review
   end
 
   factory :downvote do
-    review_id nil
     user
+    review
   end
 end

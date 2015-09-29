@@ -16,7 +16,7 @@ feature 'user can vote on reviews', %{
     yelper = review.yelper
 
     10.times do
-      FactoryGirl.create(:upvote, review_id: review.id)
+      FactoryGirl.create(:upvote, review: review)
     end
 
     visit yelper_path(yelper)
@@ -24,7 +24,6 @@ feature 'user can vote on reviews', %{
     expect(page).to have_content '10'
 
     click_link("up-vote")
-
     expect(page).to have_content '10'
   end
 
@@ -34,14 +33,10 @@ feature 'user can vote on reviews', %{
     user = review.user
 
     10.times do
-      FactoryGirl.create(:upvote, review_id: review.id)
+      FactoryGirl.create(:upvote, review: review)
     end
 
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
+    sign_in_as(user)
 
     visit yelper_path(yelper)
 
@@ -55,15 +50,10 @@ feature 'user can vote on reviews', %{
     user = review.user
 
     10.times do
-      FactoryGirl.create(:upvote, review_id: review.id)
+      FactoryGirl.create(:upvote, review: review)
     end
 
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
+    sign_in_as(user)
     visit yelper_path(yelper)
 
     click_link("down-vote")
@@ -76,15 +66,10 @@ feature 'user can vote on reviews', %{
     user = review.user
 
     10.times do
-      FactoryGirl.create(:upvote, review_id: review.id)
+      FactoryGirl.create(:upvote, review: review)
     end
 
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
+    sign_in_as(user)
     visit yelper_path(yelper)
 
     click_link("down-vote")
@@ -99,15 +84,10 @@ feature 'user can vote on reviews', %{
     user = review.user
 
     10.times do
-      FactoryGirl.create(:upvote, review_id: review.id)
+      FactoryGirl.create(:upvote, review: review)
     end
 
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
+    sign_in_as(user)
     visit yelper_path(yelper)
 
     click_link("up-vote")
