@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+
   def show
     @yelper = Yelper.find(params[:yelper_id])
     @review = Review.find(params[:id])
@@ -32,11 +33,25 @@ class ReviewsController < ApplicationController
       flash[:errors] = @review.errors.full_messages.join(". ")
       render :show
     end
+
+  def destroy
+    @review = Review.find(params[:id])
+    authorize_user(@review)
+    @yelper = @review.yelper
+    @review.destroy
+    flash[:success] = 'Review deleted.'
+    redirect_to yelper_path(@yelper)
   end
 
   private
 
   def review_params
     params.require(:review).permit(:rating, :body)
+  end
+
+  def authorize_user(review)
+    unless current_user == review.user || current_user.admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 end

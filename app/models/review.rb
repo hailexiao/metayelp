@@ -3,8 +3,8 @@ class Review < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :yelper
-  has_many :upvotes
-  has_many :downvotes
+  has_many :upvotes, dependent: :destroy
+  has_many :downvotes, dependent: :destroy
 
   validates :rating, presence: true
   validates :rating, numericality: { only_integer: true }
