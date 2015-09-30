@@ -16,7 +16,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   def show
     @yelper = Yelper.find(params[:yelper_id])
     @review = Review.find(params[:id])
