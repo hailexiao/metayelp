@@ -16,7 +16,7 @@ feature 'edit a review', %{
     visit yelper_path(yelper)
 
 
-    expect(page).not_to have_content("Edit Review")
+    expect(page).not_to have_content("You need to sign in or sign up before continuing.")
   end
   scenario "a logged in user tries to edit their review" do
     review = FactoryGirl.create(:review)
@@ -29,13 +29,13 @@ feature 'edit a review', %{
 
     click_button("Edit Review")
     fill_in "Body", with: "My feelings on this yelper have soured.
-                          His reviews suck."
+                           His reviews suck."
     fill_in "Rating", with: 1
     click_button("Submit Review")
 
     expect(page).to have_content(yelper.name)
     expect(page).to have_content("My feelings on this yelper have soured.
-                          His reviews suck.")
+                                  His reviews suck.")
   end
 
   scenario "a logged in user tries to edit another user's review" do
@@ -49,7 +49,7 @@ feature 'edit a review', %{
     visit yelper_review_path(yelper_id: yelper.id, id: review_two.id)
 
     fill_in "Body", with: "My feelings on this yelper have soured.
-                          His reviews suck."
+                           His reviews suck."
     fill_in "Rating", with: 1
     click_button("Submit Review")
 

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_yelper_and_review, only: [:show, :update]
 
   def create
     @review = Review.new(review_params)
@@ -18,22 +19,14 @@ class ReviewsController < ApplicationController
 
 
   def show
-    @yelper = Yelper.find(params[:yelper_id])
-    @review = Review.find(params[:id])
+    @yelper
+    @review
   end
 
   def update
-    @review = Review.find(params[:id])
-    if current_user == @review.user || current_user.admin?
-      @yelper = Yelper.find(params[:yelper_id])
-      @review.rating = review_params[:rating]
-      @review.body = review_params[:body]
-    else
-      flash[:error] = "You can only edit your own reviews"
-      redirect_to yelpers_path
-      return
-    end
-
+    @yelper
+    @review
+    @review.update(body: review_params[:body], rating: review_params[:rating])
     if @review.save
       redirect_to yelper_path(@yelper, anchor: "#{@review.id}")
     else
@@ -61,5 +54,10 @@ class ReviewsController < ApplicationController
     unless current_user == review.user || current_user.admin?
       raise ActionController::RoutingError.new("Not Found")
     end
+  end
+
+  def set_yelper_and_review
+    @yelper = Yelper.find(params[:yelper_id])
+    @review = Review.find(params[:id])
   end
 end
