@@ -17,7 +17,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   def show
     @yelper
     @review

@@ -15,8 +15,8 @@ feature 'edit a review', %{
 
     visit yelper_path(yelper)
 
-
     expect(page).not_to have_content("You need to sign in or sign up before continuing.")
+
   end
   scenario "a logged in user tries to edit their review" do
     review = FactoryGirl.create(:review)
