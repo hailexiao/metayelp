@@ -34,5 +34,10 @@ module Metayelp
 
     # load everything in the 'lib' folder
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    # set default host for Action Mailer
+    config.action_mailer.default_url_options = {
+      host: 'thawing-fjord-2568.herokuapp.com'}
+      
   end
 end

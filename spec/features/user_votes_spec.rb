@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'mail_helper'
 
 feature 'user can vote on reviews', %{
   As a reviewer of Yelpers
@@ -48,6 +49,7 @@ feature 'user can vote on reviews', %{
     end
 
     expect(page).to have_content("11")
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
 
   scenario "signed in user downvotes, review's downvotes go down 1", js: true do
@@ -66,7 +68,10 @@ feature 'user can vote on reviews', %{
       find('#down-vote').trigger('click')
     end
 
+    sleep(10)
+
     expect(page).to have_content("1")
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
 
   scenario "signed in user tries to vote twice on the same review", js: true do
@@ -111,6 +116,7 @@ feature 'user can vote on reviews', %{
     end
 
     expect(page).to have_content("11")
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
 
     within(".votes") do
       find('#down-vote').trigger('click')
@@ -118,5 +124,6 @@ feature 'user can vote on reviews', %{
 
     expect(page).to have_content("1")
     expect(page).to have_content("10")
+    expect(ActionMailer::Base.deliveries.count).to eq(2)
   end
 end

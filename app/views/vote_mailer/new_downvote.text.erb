@@ -1,0 +1,8 @@
+Hello <%= @review.user.first_name + " " + @review.user.last_name %>,
+
+Your review of <%= @review.yelper.name %> has been downvoted <%=
+  @review.downvotes.count %> times.
+
+Get your shit together!
+
+Metayelp
