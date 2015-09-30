@@ -18,11 +18,13 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    authorize_user(@review)
     @yelper
     @review
   end
 
   def update
+
     @yelper
     @review
     @review.update(body: review_params[:body], rating: review_params[:rating])
@@ -51,7 +53,8 @@ class ReviewsController < ApplicationController
 
   def authorize_user(review)
     unless current_user == review.user || current_user.admin?
-      raise ActionController::RoutingError.new("Not Found")
+      # raise ActionController::RoutingError.new("Not Found")
+       render status: 404
     end
   end
 
