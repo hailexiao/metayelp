@@ -7,9 +7,6 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'shoulda-matchers'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-# require File.join(File.dirname(__FILE__), 'support/valid_attribute')
-# require File.join(File.dirname(__FILE__), 'support/factory_girl')
-# require File.join(File.dirname(__FILE__), 'support/database_cleaner')
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
