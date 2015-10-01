@@ -8,7 +8,7 @@
     <article class="yelper-card">
       <%= link_to image_tag(yelper.image_url), yelper_path(yelper)%>
       <div class="card-content">
-        <p class="yelper-name"><%= link_to yelper.name, yelper_path(yelper) %></p>
+        <p class="yelper-name"><%= link_to truncate(yelper.name, length: 22), yelper_path(yelper) %></p>
         <h4><%= yelper.location %></h4>
       </div>
     </article>
