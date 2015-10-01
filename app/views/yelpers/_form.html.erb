@@ -15,7 +15,7 @@
         <%= label_tag('review_rating_1', '') %>
       <% end %>
 
-      <%= f.text_field :body, placeholder: "leave a review here!" %>
+      <%= f.text_area :body, placeholder: "leave a review here!" %>
 
       <%= f.submit "Submit Review", class: "button round tiny" %>
       <% end %>
