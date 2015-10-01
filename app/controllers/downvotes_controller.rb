@@ -6,6 +6,7 @@ class DownvotesController < ApplicationController
     downvote.user = current_user
     if downvote.save
       @review.upvotes.where(user: current_user).destroy_all
+      VoteMailer.new_downvote(@review).deliver_later
       render json: { downvotesCount: @review.downvotes.count,
                      upvotesCount: @review.upvotes.count }
     else
