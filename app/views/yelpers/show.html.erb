@@ -46,9 +46,9 @@
               <% end %>
             <% end %>
             <div class = "votes">
-              <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" id="up-vote"><i class="fi-arrow-up"></i>
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" class="up-vote"><i class="fi-arrow-up"></i>
               <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
-              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" id="down-vote"><i class="fi-arrow-down"></i>
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" class="down-vote"><i class="fi-arrow-down"></i>
               <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
             </div>
           </div>

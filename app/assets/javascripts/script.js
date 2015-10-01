@@ -1,6 +1,6 @@
 $('#up-vote').on('click', function(e) {
       e.preventDefault();
-
+      debugger;
       var $this = $(this);
       var reviewId = $this.attr('data-review-id');
       var yelperId = $this.attr('data-yelper-id');
@@ -10,7 +10,7 @@ $('#up-vote').on('click', function(e) {
          url: '/yelpers/' + yelperId + '/reviews/' + reviewId + '/upvotes',
          dataType: 'json'
        }).done(function(resp) {
-          var div = $this.parent();
+          div = $this.parent();
           div.find('.upvote-count').html(resp.upvotesCount);
           div.find('.downvote-count').html(resp.downvotesCount);
        });
