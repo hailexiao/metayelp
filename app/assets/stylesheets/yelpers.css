@@ -59,6 +59,7 @@ body {
     width: 100%;
 }
 
+<<<<<<< HEAD
 /* STAR RATINGS */
 
 fieldset, label { margin: 0; padding: 0; }
@@ -98,4 +99,7 @@ fieldset, label { margin: 0; padding: 0; }
 
 .votes {
 	margin-bottom: 1em;
+
+.top-bar-section ul li {
+  background: #4C4C4C;
 }
