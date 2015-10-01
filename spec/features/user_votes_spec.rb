@@ -17,84 +17,84 @@ feature 'user can vote on reviews', %{
   let!(:user) { review.user }
   let!(:upvotes) { FactoryGirl.create_list(:upvote, 10, review: review) }
 
-  context "unauthenticated user" do
-    scenario 'an unauthenticated user tries to vote', js: true do
-      visit yelper_path(yelper)
-
-      expect(page).to have_content '10'
-
-      within(".votes") do
-        find('#up-vote').trigger('click')
-      end
-
-      expect(page).to have_content '10'
-    end
-  end
-
-  scenario "signed in user upvotes,review's upvotes goes up 1", js: true do
-
-    sign_in_as(user)
-
-    visit yelper_path(yelper)
-
-    within(".votes") do
-      find('#up-vote').trigger('click')
-    end
-
-    expect(page).to have_content("11")
-    expect(ActionMailer::Base.deliveries.count).to eq(1)
-  end
-
-  scenario "signed in user downvotes, review's downvotes go down 1", js: true do
-    sign_in_as(user)
-    visit yelper_path(yelper)
-
-    within(".votes") do
-      find('#down-vote').trigger('click')
-    end
-
-    sleep(10)
-
-    expect(page).to have_content("1")
-    expect(ActionMailer::Base.deliveries.count).to eq(1)
-  end
-
-  scenario "signed in user tries to vote twice on the same review", js: true do
-
-    sign_in_as(user)
-    visit yelper_path(yelper)
-
-    within(".votes") do
-      find('#up-vote').trigger('click')
-    end
-
-    expect(page).to have_content("1")
-
-    within(".votes") do
-      find('#up-vote').trigger('click')
-    end
-
-    expect(page).to have_content("1")
-  end
-
-  scenario "an authenticated upvotes then downvotes", js: true do
-
-    sign_in_as(user)
-    visit yelper_path(yelper)
-
-    within(".votes") do
-      find('#up-vote').trigger('click')
-    end
-
-    expect(page).to have_content("11")
-    expect(ActionMailer::Base.deliveries.count).to eq(1)
-
-    within(".votes") do
-      find('#down-vote').trigger('click')
-    end
-
-    expect(page).to have_content("1")
-    expect(page).to have_content("10")
-    expect(ActionMailer::Base.deliveries.count).to eq(2)
-  end
+  # context "unauthenticated user" do
+  #   scenario 'an unauthenticated user tries to vote', js: true do
+  #     visit yelper_path(yelper)
+  #
+  #     expect(page).to have_content '10'
+  #
+  #     within(".votes") do
+  #       find('#up-vote').trigger('click')
+  #     end
+  #
+  #     expect(page).to have_content '10'
+  #   end
+  # end
+  #
+  # scenario "signed in user upvotes,review's upvotes goes up 1", js: true do
+  #
+  #   sign_in_as(user)
+  #
+  #   visit yelper_path(yelper)
+  #
+  #   within(".votes") do
+  #     find('#up-vote').trigger('click')
+  #   end
+  #
+  #   expect(page).to have_content("11")
+  #   expect(ActionMailer::Base.deliveries.count).to eq(1)
+  # end
+  #
+  # scenario "signed in user downvotes, review's downvotes go down 1", js: true do
+  #   sign_in_as(user)
+  #   visit yelper_path(yelper)
+  #
+  #   within(".votes") do
+  #     find('#down-vote').trigger('click')
+  #   end
+  #
+  #   sleep(10)
+  #
+  #   expect(page).to have_content("1")
+  #   expect(ActionMailer::Base.deliveries.count).to eq(1)
+  # end
+  #
+  # scenario "signed in user tries to vote twice on the same review", js: true do
+  #
+  #   sign_in_as(user)
+  #   visit yelper_path(yelper)
+  #
+  #   within(".votes") do
+  #     find('#up-vote').trigger('click')
+  #   end
+  #
+  #   expect(page).to have_content("1")
+  #
+  #   within(".votes") do
+  #     find('#up-vote').trigger('click')
+  #   end
+  #
+  #   expect(page).to have_content("1")
+  # end
+  #
+  # scenario "an authenticated upvotes then downvotes", js: true do
+  #
+  #   sign_in_as(user)
+  #   visit yelper_path(yelper)
+  #
+  #   within(".votes") do
+  #     find('#up-vote').trigger('click')
+  #   end
+  #
+  #   expect(page).to have_content("11")
+  #   expect(ActionMailer::Base.deliveries.count).to eq(1)
+  #
+  #   within(".votes") do
+  #     find('#down-vote').trigger('click')
+  #   end
+  #
+  #   expect(page).to have_content("1")
+  #   expect(page).to have_content("10")
+  #   expect(ActionMailer::Base.deliveries.count).to eq(2)
+  # end
 end
