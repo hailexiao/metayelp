@@ -22,7 +22,7 @@
   <div class="small-9 columns">
     <%= render "form" %>
     <div class="row">
-      <% @yelper.reviews.each do |review| %>
+      <% @yelper.reviews.order(created_at: :desc).each do |review| %>
         <div class="row" id="<%= review.id %>">
           <div class="small-3 columns" align="center">
             <div class="user-image">
