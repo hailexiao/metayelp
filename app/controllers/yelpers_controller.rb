@@ -15,7 +15,8 @@ class YelpersController < ApplicationController
   def show
     @yelper = Yelper.find(params[:id])
     @review = Review.new
-    @reviews = @yelper.reviews.order(created_at: :desc).page(params[:page]).per(3)
+    @reviews = @yelper.reviews.order(created_at:
+               :desc).page(params[:page]).per(3)
   end
 
   def new
