@@ -5,9 +5,9 @@
         <%= f.number_field :rating, in: Review::RATINGS %>
 
         <%= f.label :body %>
-        <%= f.text_field :body %>
+        <%= f.text_area :body %>
 
-        <%= f.submit "Submit Review" %>
+        <%= f.submit "Submit Review", class: "button round tiny" %>
       <% end %>
   </div>
 </div>
