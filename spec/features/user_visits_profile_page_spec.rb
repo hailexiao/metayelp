@@ -7,7 +7,8 @@ feature 'user has a profile page', %{
 } do
 
   # Acceptance criteria
-  # [] When an authenticated user logs in they can navigate to profile page. Beep beep.
+  # [*] When an authenticated user logs in they can navigate to profile page.
+  # [*] Beep beep.
 
   scenario 'user logs in and visits profile' do
     user = FactoryGirl.create(:user)
