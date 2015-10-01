@@ -10,7 +10,7 @@
 yelpers = File.read('db/seeds.json')
 data = JSON.parse(yelpers)
 
-data["collection1"].each_with_index do |index, row|
+data["collection1"].each do |row|
   yelper = CrawlYelp.new(row["property1"]["href"]).add_yelper
   yelper.save
   sleep(5)
