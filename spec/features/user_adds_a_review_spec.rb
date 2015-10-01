@@ -3,8 +3,7 @@ require 'rails_helper'
 feature 'add a review', %{
   As a signed in user
   I want to review yelpers
-  So others will know if they are good
-  at yelping.
+  So others will know if they are good at yelping.
 } do
   # Acceptance Criteria
   # [*] An unauthenticated user cannot add a review
