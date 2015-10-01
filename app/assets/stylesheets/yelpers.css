@@ -7,9 +7,15 @@ body {
 	height: auto;
 	margin-top: 15px;
 }
+
 .top-bar {
-	margin-bottom: 35px;
+	margin-bottom: 0px;
 }
+
+.container .row .column {
+	margin-top: 35px;
+}
+
 .title {
   margin-bottom: 20px;
 }
