@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   IMAGE_SOURCES = [
     "http://www.placebear.com/250/250",
     "http://placekitten.com/g/250/250",
