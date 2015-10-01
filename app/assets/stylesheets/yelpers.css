@@ -52,3 +52,7 @@ body {
 .yelper-card img {
     width: 100%;
 }
+
+.top-bar-section ul li {
+  background: #4C4C4C;
+}

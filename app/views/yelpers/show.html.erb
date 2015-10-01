@@ -1,3 +1,5 @@
+<% content_for :title, @yelper.name + " - Yelper Helper" %>
+
 <div class="row">
   <div class="small-3 columns">
     <img src="<%= @yelper.image_url %>" alt="profile image">
@@ -24,7 +26,7 @@
   <div class="small-9 columns">
     <%= render "form" %>
     <div class="row">
-      <% @yelper.reviews.order(created_at: :desc).each do |review| %>
+      <% @yelper.reviews.each do |review| %>
         <div class="row" id="<%= review.id %>">
           <div class="small-3 columns" align="center">
             <div class="user-image">
@@ -50,14 +52,15 @@
               <% end %>
             <% end %>
             <div class = "votes">
-              <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" id="up-vote"><i class="fi-arrow-up"></i>
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" class="up-vote"><i class="fi-arrow-up"></i>
               <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
-              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" id="down-vote"><i class="fi-arrow-down"></i>
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" class="down-vote"><i class="fi-arrow-down"></i>
               <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
             </div>
           </div>
         </div>
       <% end %>
+       <%= paginate @reviews %>
     </div>
   </div>
 </div>

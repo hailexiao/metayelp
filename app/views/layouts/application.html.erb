@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Metayelp</title>
+  <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <!-- <link rel="stylesheet" href="foundation-icons/foundation-icons.css" /> -->
   <%= stylesheet_link_tag '/foundation-icons/foundation-icons.css', media: 'all' %>
@@ -14,7 +14,7 @@
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">Metayelp</a></h1>
+        <h1><a href="/">Yelper Helper</a></h1>
       </li>
     </ul>
 
@@ -46,7 +46,7 @@
               </li>
             </div>
             <div class="large-4 small-3 columns">
-              <%= submit_tag "Search", name: nil, class: "alert button expand" %>
+              <%= submit_tag "Search", name: nil, class: "button expand" %>
               <% end %>
             </div>
           </div>
