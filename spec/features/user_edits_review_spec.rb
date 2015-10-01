@@ -46,6 +46,6 @@ feature 'edit a review', %{
 
     sign_in_as(user)
     expect { visit yelper_review_path(yelper_id: yelper.id,
-           id: review_two.id) }.to raise_error(ActionController::RoutingError)
+             id: review_two.id) }.to raise_error(ActionController::RoutingError)
   end
 end
