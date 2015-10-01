@@ -6,7 +6,7 @@
       <p><i class="fi-page"></i>
         <a href="http://www.yelp.com/user_details?userid=<%= @yelper.uid %>"> Profile Page</a></p>
 
-    <ul class="button-group even-2">
+    <ul class="button-group radius even-2">
      <li><a href="#" class="button"> Reviews <span><%= @yelper.number_of_reviews %> </span></a></li>
      <li><a href="#" class="button">  Fans <span>432 </span></a></li>
     </ul>
@@ -24,8 +24,8 @@
   <div class="small-9 columns">
     <%= render "form" %>
     <div class="row">
-      <% @yelper.reviews.order(created_at: :desc).each do |review| %>
-        <div class="row" id="<%= review.id %>">
+      <% @reviews.each do |review| %>
+        <div class="review row" id="<%= review.id %>">
           <div class="small-3 columns" align="center">
             <div class="user-image">
               <img src="<%= review.user.profile_photo %>" alt="profile image">
@@ -33,31 +33,32 @@
             <%= review.user.last_name %>
           </div>
           <div class="small-9 columns">
-            <p><%= review.rating %></p>
             <p><%= review.body %></p>
-            <% if current_user %>
-               <% if review.user == current_user || current_user.admin? %>
-                 <%= button_to "Edit Review",
-                 yelper_review_path(@yelper, id: review.id),
-                 method: :get,
-                 class: "button" %>
-                <% end %>
-              <% if review.user == current_user || current_user.admin? %>
-                <%= button_to "Delete Review",
-                yelper_review_path(review, id: review.id),
-                method: :delete,
-                class: "button" %>
-              <% end %>
-            <% end %>
             <div class = "votes">
+              <%= review.rating %>
               <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" id="up-vote"><i class="fi-arrow-up"></i>
               <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
               <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" id="down-vote"><i class="fi-arrow-down"></i>
               <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
             </div>
+            <% if current_user %>
+              <% if review.user == current_user || current_user.admin? %>
+              <ul class="button-group round">
+                <li><%= link_to "Edit Review",
+                yelper_review_path(@yelper, id: review.id),
+                method: :get,
+                class: "button tiny" %></li>
+                <li><%= link_to "Delete Review",
+                yelper_review_path(review, id: review.id),
+                method: :delete,
+                class: "button tiny" %></li>
+              <% end %>
+              </ul>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
+  <%= paginate @reviews %>
 </div>

@@ -58,3 +58,12 @@ body {
 .yelper-card img {
     width: 100%;
 }
+
+.review.row {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.votes {
+	margin-bottom: 1em;
+}
