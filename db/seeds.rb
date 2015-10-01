@@ -13,7 +13,5 @@ data = JSON.parse(yelpers)
 data["collection1"].each_with_index do |index, row|
   yelper = CrawlYelp.new(row["property1"]["href"]).add_yelper
   yelper.save
-  print "...."
   sleep(5)
-  print n
 end
