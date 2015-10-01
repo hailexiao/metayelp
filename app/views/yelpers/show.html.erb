@@ -1,3 +1,5 @@
+<% content_for :title, @yelper.name + " - Yelper Helper" %>
+
 <div class="row">
   <div class="small-3 columns">
     <img src="<%= @yelper.image_url %>" alt="profile image">
@@ -36,7 +38,9 @@
           <div class="small-9 columns">
             <p><%= review.body %></p>
             <div class = "votes">
-              <%= review.rating %>
+              <% 1.upto(review.rating.to_i) do %>
+                <i class="fi-star"></i>
+              <% end %>
               <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" class="up-vote"><i class="fi-arrow-up"></i>
               <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
               <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" class="down-vote"><i class="fi-arrow-down"></i>
@@ -61,5 +65,4 @@
       <% end %>
     </div>
   </div>
-  <%= paginate @reviews %>
 </div>

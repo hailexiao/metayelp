@@ -13,16 +13,16 @@ feature 'search for a yelper', %{
 
   scenario 'user searches for a Yelper by name' do
     yelpers = []
-    10.times do
+    5.times do
       new_yelper = FactoryGirl.create(:yelper)
       yelpers << new_yelper
     end
 
     visit yelpers_path
-    fill_in 'search', with: yelpers[9].name
+    fill_in 'search', with: yelpers[3].name
     click_button 'Search'
 
-    expect(page).to have_content(yelpers[9].location)
+    expect(page).to have_content(yelpers[3].location)
   end
 
   scenario 'search returns no matches' do
