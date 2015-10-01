@@ -12,13 +12,7 @@ feature 'user signs out', %{
     admin = FactoryGirl.create(:user, role: "admin")
     user = FactoryGirl.create(:user)
 
-    visit new_user_session_path
-
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-
-    click_button 'Log in'
-
+    sign_in_as(admin)
     visit admin_users_path
 
     expect(page).to have_content(user.first_name)
@@ -27,12 +21,7 @@ feature 'user signs out', %{
   scenario 'authenticated non-admin visits users index' do
     user = FactoryGirl.create(:user)
 
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Log in'
+    sign_in_as(user)
 
     visit admin_users_path
 

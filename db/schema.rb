@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924175650) do
+ActiveRecord::Schema.define(version: 20150928143303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+
+  create_table "downvotes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+  end
+
+  add_index "downvotes", ["user_id", "review_id"], name: "index_downvotes_on_user_id_and_review_id", unique: true, using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "body",       null: false
@@ -24,6 +32,13 @@ ActiveRecord::Schema.define(version: 20150924175650) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+  end
+
+  add_index "upvotes", ["user_id", "review_id"], name: "index_upvotes_on_user_id_and_review_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",       null: false
@@ -40,8 +55,8 @@ ActiveRecord::Schema.define(version: 20150924175650) do
     t.datetime "updated_at",                                null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "role",                   default: "member", null: false
     t.string   "profile_photo"
+    t.string   "role",                   default: "member", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -56,5 +71,7 @@ ActiveRecord::Schema.define(version: 20150924175650) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  add_index "yelpers", ["uid"], name: "index_yelpers_on_uid", unique: true, using: :btree
 
 end

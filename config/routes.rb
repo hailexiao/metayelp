@@ -1,16 +1,24 @@
 Rails.application.routes.draw do
-  get 'users/show'
-
   root 'yelpers#index'
+
   devise_for :users
 
-  resources :yelpers, only: [:index, :new, :create, :show] do
-    resources :reviews, only: [:create]
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
   end
+
+  resources :yelpers,
+    only: [:index, :new, :create, :show, :destroy], concerns: :paginatable do
+    resources :reviews, only: [:create, :destroy, :show, :update] do
+      resources :upvotes, only: [:create]
+      resources :downvotes, only: [:create]
+    end
+  end
+
   resources :users, only: [:show]
 
   namespace :admin do
-    resources :users, only: [:index]
+    resources :users, only: [:index, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

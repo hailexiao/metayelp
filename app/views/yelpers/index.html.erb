@@ -14,4 +14,13 @@
     </article>
   </div>
  <% end %>
+
+ <% if @yelpers.empty? %>
+  <div data-alert class="alert-box info radius">
+    There are no Yelpers by that name yet.
+    <%= link_to "Would you like to add one?", new_yelper_path %>
+  </div>
+ <% end %>
+
+ <%= paginate @yelpers %>
 </div>

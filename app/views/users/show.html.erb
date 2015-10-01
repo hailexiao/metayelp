@@ -15,3 +15,42 @@
     </div>
   </div>
 </div>
+
+<div class="small-9 columns">
+  <div class="row">
+    <% @user.reviews.each do |review| %>
+      <div class="row" id="<%= review.id %>">
+        <div class="small-3 columns" align="center">
+          <div class="user-image">
+            <img src="<%= review.yelper.image_url %>" alt="profile image">
+          </div>
+          <%= review.user.last_name %>
+        </div>
+        <div class="small-9 columns">
+          <p><%= review.rating %></p>
+          <p><%= review.body %></p>
+          <% if current_user %>
+             <% if review.user == current_user || current_user.admin? %>
+               <%= button_to "Edit Review",
+               yelper_review_path(yelper_id: review.yelper.id, id: review.id),
+               method: :get,
+               class: "button" %>
+              <% end %>
+          <% end %>
+          <div class = "votes">
+            <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= review.yelper.id %>" id="up-vote"><i class="fi-arrow-up"></i>
+            <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
+            <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= review.yelper.id %>" id="down-vote"><i class="fi-arrow-down"></i>
+            <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+ </div>
+</div>
+
+<%- if current_user.admin? %>
+  <p>Unhappy? <%= button_to "Delete User",
+    admin_user_path(@user),
+    data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%- end %>
