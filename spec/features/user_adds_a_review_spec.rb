@@ -13,8 +13,8 @@ feature 'add a review', %{
     yelper = FactoryGirl.create(:yelper)
 
     visit yelper_path(yelper)
-    fill_in "Rating", with: 5
-    fill_in "Body", with: "So elite."
+    find('#review_rating_2').set(true)
+    fill_in "review[body]", with: "So elite."
 
     click_button 'Submit Review'
 
@@ -47,14 +47,14 @@ feature 'add a review', %{
     click_button 'Log in'
 
     visit yelper_path(yelper)
-    fill_in "Rating", with: 5
-    fill_in "Body", with: "This reviewer is so totally elite and
-                    stuff. It's great."
+    find('#review_rating_5').set(true)
+    fill_in "review[body]", with: "This reviewer is so totally elite and
+                                   stuff. It's great."
 
     click_button 'Submit Review'
 
     expect(page).to have_content("Review added!")
-    expect(page).to have_content(5)
+    expect(page).to have_css(".fi-star", count: 5)
     expect(page).to have_content("This reviewer is so totally elite and
       stuff. It's great.")
   end

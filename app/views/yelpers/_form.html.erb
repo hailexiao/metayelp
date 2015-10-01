@@ -1,13 +1,23 @@
 <div class="row">
     <div class="small-9 columns">
       <%= form_for [@yelper, @review] do |f| %>
-        <%= f.label :rating %>
-        <%= f.number_field :rating, in: Review::RATINGS %>
 
-        <%= f.label :body %>
-        <%= f.text_field :body %>
+        <%= field_set_tag nil, class: "rating" do %>
+          <%= radio_button_tag("review[rating]", "5") %>
+          <%= label_tag('review_rating_5', '') %>
+          <%= radio_button_tag("review[rating]", "4") %>
+          <%= label_tag('review_rating_4', '') %>
+          <%= radio_button_tag("review[rating]", "3") %>
+          <%= label_tag('review_rating_3', '') %>
+          <%= radio_button_tag("review[rating]", "2") %>
+          <%= label_tag('review_rating_2', '') %>
+          <%= radio_button_tag("review[rating]", "1") %>
+          <%= label_tag('review_rating_1', '') %>
+        <% end %>
 
-        <%= f.submit "Submit Review" %>
+        <%= f.text_field :body, placeholder: "leave a review here!" %>
+
+        <%= f.submit "Submit Review", class: "button tiny" %>
       <% end %>
   </div>
 </div>
