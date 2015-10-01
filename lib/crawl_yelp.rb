@@ -3,6 +3,15 @@ class CrawlYelp
     @url = url
   end
 
+  def yelper_unique_check
+    yelper = Yelper.where(uid: find_profile_id)
+    if yelper.empty?
+      nil
+    else
+      yelper.first
+    end
+  end
+
   def add_yelper
     p = crawl
     Yelper.new(name: p.css(".user-profile_info h1").text,
