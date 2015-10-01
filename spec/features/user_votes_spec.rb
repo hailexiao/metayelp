@@ -45,36 +45,38 @@ feature 'user can vote on reviews', %{
   #   expect(ActionMailer::Base.deliveries.count).to eq(1)
   # end
   #
-  # scenario "signed in user downvotes, review's downvotes go down 1", js: true do
-  #   sign_in_as(user)
-  #   visit yelper_path(yelper)
+  # scenario "signed in user downvotes, review's downvotes go down 1",
+  #   js: true do
+  #     sign_in_as(user)
+  #     visit yelper_path(yelper)
   #
-  #   within(".votes") do
-  #     find('#down-vote').trigger('click')
-  #   end
+  #     within(".votes") do
+  #       find('#down-vote').trigger('click')
+  #     end
   #
-  #   sleep(10)
+  #     sleep(10)
   #
-  #   expect(page).to have_content("1")
-  #   expect(ActionMailer::Base.deliveries.count).to eq(1)
+  #     expect(page).to have_content("1")
+  #     expect(ActionMailer::Base.deliveries.count).to eq(1)
   # end
   #
-  # scenario "signed in user tries to vote twice on the same review", js: true do
+  # scenario "signed in user tries to vote twice on the same review",
+  #   js: true do
   #
-  #   sign_in_as(user)
-  #   visit yelper_path(yelper)
+  #     sign_in_as(user)
+  #     visit yelper_path(yelper)
   #
-  #   within(".votes") do
-  #     find('#up-vote').trigger('click')
-  #   end
+  #     within(".votes") do
+  #       find('#up-vote').trigger('click')
+  #     end
   #
-  #   expect(page).to have_content("1")
+  #     expect(page).to have_content("1")
   #
-  #   within(".votes") do
-  #     find('#up-vote').trigger('click')
-  #   end
+  #     within(".votes") do
+  #       find('#up-vote').trigger('click')
+  #     end
   #
-  #   expect(page).to have_content("1")
+  #     expect(page).to have_content("1")
   # end
   #
   # scenario "an authenticated upvotes then downvotes", js: true do

@@ -37,7 +37,6 @@ module Metayelp
 
     # set default host for Action Mailer
     config.action_mailer.default_url_options = {
-      host: 'thawing-fjord-2568.herokuapp.com'}
-      
+      host: 'thawing-fjord-2568.herokuapp.com' }
   end
 end

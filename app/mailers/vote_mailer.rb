@@ -11,8 +11,8 @@ class VoteMailer < ApplicationMailer
 
     mail(
       to: review.user.email,
-      subject: "Your review for #{review.yelper.name} has been upvoted #{review.upvotes.count}
-         time(s)!"
+      subject: "Your review for #{review.yelper.name}
+        has been upvoted #{review.upvotes.count} time(s)!"
     )
   end
 
@@ -21,9 +21,8 @@ class VoteMailer < ApplicationMailer
 
     mail(
       to: review.user.email,
-      subject: "Your review for #{review.yelper.name} has been downvoted #{review.downvotes.count}
-         time(s)!"
+      subject: "Your review for #{review.yelper.name}
+        has been downvoted #{review.downvotes.count} time(s)!"
     )
   end
-
 end
