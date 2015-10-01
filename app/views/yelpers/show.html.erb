@@ -30,15 +30,16 @@
             <div class="user-image">
               <img src="<%= review.user.profile_photo %>" alt="profile image">
             </div>
-            <%= review.user.last_name %>
+            <h6><%= review.user.first_name.titleize + " " +
+             review.user.last_name[0].upcase %></h6>
           </div>
           <div class="small-9 columns">
             <p><%= review.body %></p>
             <div class = "votes">
               <%= review.rating %>
-              <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" id="up-vote"><i class="fi-arrow-up"></i>
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id= "<%= @yelper.id %>" class="up-vote"><i class="fi-arrow-up"></i>
               <span class="upvote-count"> <%= review.upvotes.count %> </span></a>
-              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" id="down-vote"><i class="fi-arrow-down"></i>
+              <a href="#" data-review-id="<%= review.id %>" data-yelper-id="<%= @yelper.id %>" class="down-vote"><i class="fi-arrow-down"></i>
               <span class="downvote-count"> <%= review.downvotes.count %> </span></a>
             </div>
             <% if current_user %>
