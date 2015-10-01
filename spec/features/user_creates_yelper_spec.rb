@@ -43,7 +43,7 @@ feature "user creates yelper", %{
                                  user_id: user.id, yelper_id: 1)
     yelper.save
 
-    url = "http://www.yelp.com/user_details?userid="
+    url = "https://www.yelp.com/user_details?userid="
 
     visit new_yelper_path
     fill_in "yelper[uid]", with: url + yelper.uid
