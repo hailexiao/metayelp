@@ -56,7 +56,8 @@
 #     expect(page).to have_content("1")
 #   end
 #
-#   scenario "signed in user tries to vote twice on the same review", js: true do
+#   scenario "signed in user tries to vote twice on the same review",
+#   js: true do
 #
 #     sign_in_as(user)
 #     visit yelper_path(yelper)
