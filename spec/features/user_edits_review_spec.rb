@@ -45,14 +45,7 @@ feature 'edit a review', %{
     user = review.user
 
     sign_in_as(user)
-
-    visit yelper_review_path(yelper_id: yelper.id, id: review_two.id)
-
-    fill_in "Body", with: "My feelings on this yelper have soured.
-                           His reviews suck."
-    fill_in "Rating", with: 1
-    click_button("Submit Review")
-
-    expect(page).to have_content("Not Found")
+    expect { visit yelper_review_path(yelper_id: yelper.id,
+           id: review_two.id) }.to raise_error(ActionController::RoutingError)
   end
 end
