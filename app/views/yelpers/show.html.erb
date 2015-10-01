@@ -27,7 +27,8 @@
     <%= render "form" %>
     <div class="row">
       <% @reviews.each do |review| %>
-        <div class="row">
+      <% @yelper.reviews.each do |review| %>
+        <div class="row" id="<%= review.id %>">
           <div class="small-3 columns" align="center">
             <div class="user-image">
               <img src="<%= review.user.display_image %>" alt="profile image">
