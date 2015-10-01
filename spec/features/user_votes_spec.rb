@@ -5,12 +5,12 @@
 #   I want to vote on reviews of yelpers
 #   So I can let people know which yelper reviewers are
 #   the best at yelp reviewing.
-# } do
+#   } do
 #   # Acceptance criteria
 #   # [*] When an unauthenticated user tries to vote, they cannot.
 #   # [*] When an authenticated user upvotes, the review's upvotes goes up 1.
 #   # [*] When an authenticated user downvotes, the review's downvotes
-    # goes down 1
+#   goes down 1
 #   # [*] Users can only vote once per review.
 #   let!(:review) { FactoryGirl.create(:review) }
 #   let!(:yelper) { review.yelper }
