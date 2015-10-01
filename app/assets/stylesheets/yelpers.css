@@ -35,6 +35,12 @@ body {
     color: #757D75;
 }
 
+.yelper-card .card-content .yelper-review-count {
+    text-align: center;
+    font-size: 1em;
+    color: #CF0000;
+}
+
 .yelper-card .card-content h4 {
     color: #CF000F;
     text-align: center;
