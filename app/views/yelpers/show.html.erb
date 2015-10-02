@@ -1,7 +1,7 @@
 <% content_for :title, @yelper.name + " - Yelper Helper" %>
 
 <div class="row">
-  <div class="small-3 columns">
+  <div class="small-3 columns profile-box">
     <img src="<%= @yelper.image_url %>" alt="profile image">
     <a href="http://www.yelp.com/user_details?userid=<%= @yelper.uid %>"><h4><%= @yelper.name %></h4></a>
     <p><i class="fi-globe"></i><span><%= @yelper.location %></span></p>
