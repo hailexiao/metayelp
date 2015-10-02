@@ -44,6 +44,9 @@
               <li>
               <%= text_field_tag :search, params[:search], placeholder: "Find a Yelper" %>
               </li>
+              <li>
+              <%= form_tag() :local, params[:local], placeholder: "Find a Yelper" %>
+              </li>
             </div>
             <div class="large-4 small-3 columns">
               <%= submit_tag "Search", name: nil, class: "button expand" %>
