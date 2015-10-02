@@ -9,11 +9,11 @@ class YelpersController < ApplicationController
     elsif params[:local]
       location = request.remote_ip
       location_resp = GeoIP.new('GeoLiteCity.dat').city(location)
-      user_location = location_resp.region_name unless @location_resp.nil?
-      if @user_location.nil?
+      user_location = location_resp.region_name unless location_resp.nil?
+      if user_location.nil?
         @yelpers = Yelper.order('reviews_count DESC').page(params[:page]).per(6)
       else
-        @city_location = location_resp.city_name
+        flash[:notice] = "Showing Yelpers near #{location_resp.city_name}."
         @yelpers = Yelper.advanced_search(location: ", #{user_location}").order(
         'reviews_count DESC').page(params[:page]).per(6)
       end
