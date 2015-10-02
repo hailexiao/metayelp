@@ -24,7 +24,7 @@ class CrawlYelp
   private
 
   def no_quote(name)
-    name.gsub( /".*?"/, "" ).squeeze(" ")
+    name.gsub(/".*?"/, "").squeeze(" ")
   end
 
   def find_profile_id
