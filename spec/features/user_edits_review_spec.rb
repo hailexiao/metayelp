@@ -27,10 +27,10 @@ feature 'edit a review', %{
 
     visit yelper_path(yelper)
 
-    click_button("Edit Review")
-    fill_in "Body", with: "My feelings on this yelper have soured.
+    click_link("Edit Review")
+    fill_in "review[body]", with: "My feelings on this yelper have soured.
                            His reviews suck."
-    fill_in "Rating", with: 1
+    find('#review_rating_1').set(true)
     click_button("Submit Review")
 
     expect(page).to have_content(yelper.name)

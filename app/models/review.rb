@@ -2,7 +2,7 @@ class Review < ActiveRecord::Base
   RATINGS = ["1", "2", "3", "4", "5"]
 
   belongs_to :user
-  belongs_to :yelper
+  belongs_to :yelper, counter_cache: true
   has_many :upvotes, dependent: :destroy
   has_many :downvotes, dependent: :destroy
 
