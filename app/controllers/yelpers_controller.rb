@@ -19,6 +19,7 @@ class YelpersController < ApplicationController
     end
   end
 
+  # comment
   def show
     @yelper = Yelper.find(params[:id])
     @review = Review.new
