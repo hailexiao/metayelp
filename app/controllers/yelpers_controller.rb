@@ -5,10 +5,10 @@ class YelpersController < ApplicationController
   def index
     if params[:search]
       @yelpers = Yelper.search(params[:search]).order(
-        'reviews_count DESC').page(params[:page]).per(6)
+        'reviews_count DESC, id ASC').page(params[:page]).per(6)
     else
       @yelpers = Yelper.order(
-        'reviews_count DESC').page(params[:page]).per(6)
+        'reviews_count DESC, id ASC').page(params[:page]).per(6)
     end
   end
 
