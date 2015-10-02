@@ -30,10 +30,13 @@ body {
 .yelper-card {
   border: 1px solid #d7d7d7;
   margin-bottom: 1.5rem;
-  box-shadow: 2px 4px 5px 0px #d7d7d7; }
+  box-shadow: 2px 4px 5px 0px #d7d7d7;
+}
+
 .yelper-card .card-content {
   background: #fff;
-  margin: 1.25rem; }
+  margin: 1.25rem;
+}
 
 .yelper-card .card-content .yelper-name {
     text-align: center;
@@ -63,6 +66,23 @@ body {
 
 .yelper-card img {
     width: 100%;
+}
+
+.profile-box {
+  background-color: #d3d3d3;
+  border: 1px solid gray;
+}
+
+.profile-box img {
+  padding-top: 10px;
+}
+
+.profile-box button {
+  color: white;
+}
+
+.profile_button {
+  background-color: gray;
 }
 
 /* STAR RATINGS */

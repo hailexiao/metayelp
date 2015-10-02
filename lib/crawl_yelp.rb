@@ -14,7 +14,7 @@ class CrawlYelp
 
   def add_yelper
     p = crawl
-    Yelper.new(name: p.css(".user-profile_info h1").text,
+    Yelper.new(name: no_quote(p.css(".user-profile_info h1").text),
                location: p.css(".user-location").text,
                uid: find_profile_id,
                number_of_reviews: p.css(".review-count span strong").text,
@@ -22,6 +22,10 @@ class CrawlYelp
   end
 
   private
+
+  def no_quote(name)
+    name.gsub(/".*?"/, "").squeeze(" ")
+  end
 
   def find_profile_id
     @url.split("userid=").last[0..21]
