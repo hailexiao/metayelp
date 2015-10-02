@@ -18,6 +18,18 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if !@user.admin?
+      @user.update(role: "admin")
+      flash[:success] = "#{@user.first_name} #{@user.last_name} is now an admin!"
+      redirect_to admin_users_path
+    else
+      flash[:error] = "#{@user.first_name} #{@user.last_name} is already an admin."
+      redirect_to admin_users_path
+    end
+  end
+
   private
 
   def authorize_user
