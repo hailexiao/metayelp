@@ -144,3 +144,8 @@ fieldset, label { margin: 0; padding: 0; }
 	color: white;
   background: #c41200;
 }
+
+.fi-star {
+	color: #FFD700;
+	padding-right: 0.5em
+}
