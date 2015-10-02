@@ -1,5 +1,10 @@
 body {
 	margin-bottom: 35px;
+	background-image: url("bg7.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 
 .user-image {
@@ -21,7 +26,6 @@ body {
 }
 
 .title h1 {
-  font-family: "europa";
   font-weight: 400;
   font-style: normal;
   font-size: 3em;
@@ -30,11 +34,14 @@ body {
 .yelper-card {
   border: 1px solid #d7d7d7;
   margin-bottom: 1.5rem;
+	background-color: #ffffff;
   box-shadow: 2px 4px 5px 0px #d7d7d7;
+}
+.yelper-card img {
+	box-shadow: 0px 0px 5px 0px #d7d7d7;
 }
 
 .yelper-card .card-content {
-  background: #fff;
   margin: 1.25rem;
 }
 
@@ -69,16 +76,23 @@ body {
 }
 
 .profile-box {
-  background-color: #d3d3d3;
-  border: 1px solid gray;
+  border: 1px solid #d7d7d7;
+  background-color: #ffffff;
+  box-shadow: 2px 4px 5px 0px #d7d7d7;
+	padding: 0;
+	text-align: center;
+	padding-bottom: 5px;
 }
 
 .profile-box img {
+  box-shadow: 0px 0px 5px 0px #d7d7d7;
+}
+
+.profile-box h4 {
   padding-top: 10px;
 }
 
-.profile-box button {
-  color: white;
+.profile-box ul li .button {
 }
 
 .profile_button {
@@ -127,5 +141,6 @@ fieldset, label { margin: 0; padding: 0; }
 }
 
 .top-bar-section ul li {
+	color: white;
   background: #4C4C4C;
 }
