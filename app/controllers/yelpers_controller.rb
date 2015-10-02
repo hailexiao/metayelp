@@ -5,8 +5,9 @@ class YelpersController < ApplicationController
   def index
     if params[:search]
       @yelpers = Yelper.search(params[:search]).order(
-        'reviews_count DESC').page(params[:page]).per(6)
+        'reviews_count DESC, id ASC').page(params[:page]).per(6)
     else
+<<<<<<< HEAD
       @location = request.remote_ip
       @location_resp = GeoIP.new('GeoLiteCity.dat').city(location)
       @user_location = @location_resp.city_name
@@ -16,6 +17,10 @@ class YelpersController < ApplicationController
       @yelpers = Yelper.advanced_search(location: @user_location).order(
         'reviews_count DESC').page(params[:page]).per(6)
       end
+=======
+      @yelpers = Yelper.order(
+        'reviews_count DESC, id ASC').page(params[:page]).per(6)
+>>>>>>> 08b802515b05afa67763dbdf1025e0e1215ed4ac
     end
   end
 
