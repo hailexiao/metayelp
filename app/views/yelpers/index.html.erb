@@ -1,6 +1,9 @@
 <% content_for :title, "Yelper Helper" %>
 
 <div class="row">
+  <% unless @city_location.nil? %>
+    <%= "Showing Yelpers near #{@city_location}" %>
+  <% end %>
   <% @yelpers.each do |yelper| %>
   <div class="medium-6 large-4 columns">
     <article class="yelper-card">

@@ -204,6 +204,7 @@ GEM
     foundation-rails (5.5.2.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
+    geoip (1.6.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     http-cookie (1.0.2)
@@ -403,6 +404,7 @@ DEPENDENCIES
   faker
   fog
   foundation-rails
+  geoip
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

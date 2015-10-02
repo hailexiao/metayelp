@@ -62,3 +62,4 @@ gem 'dotenv-rails'
 gem 'rails_12factor', group: :production
 gem 'kaminari'
 gem 'mandrill-api'
+gem 'geoip'
