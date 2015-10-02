@@ -5,17 +5,18 @@ class YelpersController < ApplicationController
   def index
     if params[:search]
       @yelpers = Yelper.search(params[:search]).order(
-        'number_of_reviews DESC').page(params[:page]).per(6)
+        'reviews_count DESC').page(params[:page]).per(6)
     else
       @yelpers = Yelper.order(
-        'number_of_reviews DESC').page(params[:page]).per(6)
+        'reviews_count DESC').page(params[:page]).per(6)
     end
   end
 
   def show
     @yelper = Yelper.find(params[:id])
     @review = Review.new
-    @reviews = @yelper.reviews.order('created_at').page(params[:page]).per(3)
+    @reviews = @yelper.reviews.order(created_at:
+               :desc).page(params[:page]).per(3)
   end
 
   def new
