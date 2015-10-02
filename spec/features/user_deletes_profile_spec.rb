@@ -16,7 +16,7 @@ feature 'delete user account', %{
     expect(page).to have_content('Sign Out')
 
     visit edit_user_registration_path
-    click_button 'Cancel my account'
+    click_button 'Delete my account'
 
 
     expect(page).to have_content
