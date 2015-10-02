@@ -7,13 +7,13 @@ class YelpersController < ApplicationController
       @yelpers = Yelper.search(params[:search]).order(
         'reviews_count DESC').page(params[:page]).per(6)
     else
-      location = request.remote_ip
-      location_resp = GeoIP.new('GeoLiteCity.dat').city(location)
-      user_location = location_resp.city_name
-      if user_location.nil?
+      @location = request.remote_ip
+      @location_resp = GeoIP.new('GeoLiteCity.dat').city(location)
+      @user_location = @location_resp.city_name
+      if @user_location.nil?
         @yelpers = Yelper.order('reviews_count DESC').page(params[:page]).per(6)
       else
-      @yelpers = Yelper.advanced_search(location: user_location).order(
+      @yelpers = Yelper.advanced_search(location: @user_location).order(
         'reviews_count DESC').page(params[:page]).per(6)
       end
     end
