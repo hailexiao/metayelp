@@ -7,9 +7,15 @@ body {
 	height: auto;
 	margin-top: 15px;
 }
+
 .top-bar {
-	margin-bottom: 35px;
+	margin-bottom: 0px;
 }
+
+.container .row .column {
+	margin-top: 35px;
+}
+
 .title {
   margin-bottom: 20px;
 }
@@ -36,6 +42,12 @@ body {
     text-align: center;
     font-size: 1.5em;
     color: #757D75;
+}
+
+.yelper-card .card-content .yelper-review-count {
+    text-align: center;
+    font-size: 1em;
+    color: #CF0000;
 }
 
 .yelper-card .card-content h4 {
@@ -71,4 +83,49 @@ body {
 
 .profile_button {
   background-color: gray;
+}
+
+/* STAR RATINGS */
+
+fieldset, label { margin: 0; padding: 0; }
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+	font-family: foundation-icons;
+  display: inline-block;
+	content: "\f1ee";
+}
+
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+.review.row {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.votes {
+	margin-bottom: 1em;
+}
+
+.top-bar-section ul li {
+  background: #4C4C4C;
 }

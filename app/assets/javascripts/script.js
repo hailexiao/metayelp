@@ -1,6 +1,5 @@
-$('#up-vote').on('click', function(e) {
+$('.up-vote').on('click', function(e) {
       e.preventDefault();
-
       var $this = $(this);
       var reviewId = $this.attr('data-review-id');
       var yelperId = $this.attr('data-yelper-id');
@@ -16,7 +15,7 @@ $('#up-vote').on('click', function(e) {
        });
     });
 
-$('#down-vote').on('click', function(e) {
+$('.down-vote').on('click', function(e) {
       e.preventDefault();
       var $this = $(this);
       var reviewId = $this.attr('data-review-id');
