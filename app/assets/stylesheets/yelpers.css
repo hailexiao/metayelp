@@ -42,24 +42,30 @@ body {
 }
 
 .yelper-card .card-content {
-  margin: 1.25rem;
+  margin: 1rem;
 }
 
 .yelper-card .card-content .yelper-name {
     text-align: center;
     font-size: 1.5em;
     color: #757D75;
+
+}
+
+.yelper-name {
+	margin-bottom: 5px;
+
 }
 
 .yelper-card .card-content .yelper-review-count {
     text-align: center;
     font-size: 1em;
-    color: #CF0000;
+
 }
 
 .yelper-card .card-content h4 {
-    color: #CF000F;
     text-align: center;
+		font-size: 1.25rem;
 }
 
 .yelper-card .card-content a i {
@@ -93,6 +99,7 @@ body {
 }
 
 .profile-box ul li .button {
+	/*background-color: #f08a24;*/
 }
 
 .profile_button {
@@ -106,20 +113,24 @@ fieldset, label { margin: 0; padding: 0; }
 .rating {
   border: none;
   float: left;
+  margin-bottom: 8px;
+	margin-top: 5px;
 }
 
 .rating > input { display: none; }
 .rating > label:before {
-  margin: 5px;
-  font-size: 1.25em;
+  /*margin: 5px;*/
+  font-size: 1.75em;
 	font-family: foundation-icons;
   display: inline-block;
 	content: "\f1ee";
+		text-shadow: 0 0 5px #8a8a8a;
+
 }
 
 .rating > label {
   color: #ddd;
- float: right;
+  float: right;
 }
 
 .rating > input:checked ~ label, /* show gold star when clicked */
@@ -147,5 +158,7 @@ fieldset, label { margin: 0; padding: 0; }
 
 .fi-star {
 	color: #FFD700;
-	padding-right: 0.5em
+	padding-right: 0.25em;
+  font-size: 1.5em;
+	text-shadow: 0 0 5px #8a8a8a;
 }

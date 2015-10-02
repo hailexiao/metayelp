@@ -25,6 +25,7 @@
 
   <div class="small-9 columns">
     <%= render "form" %>
+    <hr>
     <div class="row">
       <% @reviews.each do |review| %>
         <div class="review row" id="<%= review.id %>">
