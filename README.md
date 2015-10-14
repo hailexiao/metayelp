@@ -24,4 +24,4 @@ Don't want to make an account? Use email: ```example@example.com``` and password
 
 ## Contributors
 
-Made by [Halie Xiao](https://github.com/hailexiao), [Leise St. Clair](https://github.com/estcla), [Brendan Boyle](https://github.com/brendanboyle87), and [Drake McCabe](https://github.com/drakemccabe).
+Made by [Haile Xiao](https://github.com/hailexiao), [Leise St. Clair](https://github.com/estcla), [Brendan Boyle](https://github.com/brendanboyle87), and [Drake McCabe](https://github.com/drakemccabe).
