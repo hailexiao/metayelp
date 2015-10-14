@@ -4,17 +4,19 @@
 
 # Yelper Helper
 
-The place where reviewers get reviewed. Yelper Helper lets users add their favorite yelp reviewers and review them. So Meta! Those reviews can then be upvoted and downvoted so users can find the best reviewers out there.
+The place where reviewers get reviewed. Yelper Helper lets users add their favorite Yelp reviewers and review them. So Meta! Those reviews can then be upvoted and downvoted so users can find the best reviewers out there.
 
 View the [live site](https://thawing-fjord-2568.herokuapp.com/) on Heroku.
 Don't want to make an account? Use email: ```example@example.com``` and password: ```examplepassword```.
 
+![yelper helper](http://g.recordit.co/cocAhvQCrM.gif)
+
 ## Features
 
-* Auto fetches yelp profile information by webscraping yelp with Nokogiri
+* Auto fetches Yelp profile information by webscraping Yelp with Nokogiri
 * Geolocation by IP address to help users find yelpers in their area.
 * AJAX upvote and downvote rating system
-* Advatar uploads for user profiles with Amazon S3 integration.
+* Avatar uploads for user profiles with Amazon S3 integration.
 * User authentication and admin interface
 * Search functionality
 * Pagination
